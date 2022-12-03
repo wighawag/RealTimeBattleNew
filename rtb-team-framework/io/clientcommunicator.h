@@ -71,7 +71,7 @@ namespace IO {
                  * Establish connection to server.
 				 * @return Connection to communicator directly with the server.
                  */
-                virtual ServerConnection* getServerConnection () throw(IOException, bad_exception) = 0;
+                virtual ServerConnection* getServerConnection () = 0; //throw(IOException, bad_exception) = 0;
                         
                 
         /*

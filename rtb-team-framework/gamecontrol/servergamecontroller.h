@@ -73,14 +73,14 @@ class ServerGameController : public GameController {
 		/**
 		* 
 		*/
-		bool start () throw (bad_exception);
+		bool start (); //throw (bad_exception);
 		
 	
 		/**
 		* 
 		* @param serverCommunicator 
 		*/
-		ServerGameController (auto_ptr <ServerCommunicator> serverCommunicator)  throw (RTBException, bad_exception);
+		ServerGameController (auto_ptr <ServerCommunicator> serverCommunicator); //throw (RTBException, bad_exception);
 		
 	
 		/**

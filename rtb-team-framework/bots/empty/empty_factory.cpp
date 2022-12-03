@@ -49,7 +49,7 @@ empty_Factory::empty_Factory()
    */
 }
 
-auto_ptr <ServerStateData>  empty_Factory::createServerStateData (ServerCoordinator* serverCoordinator, const GameOptionsRepository* gameOptionsRepository) const throw(StrategyException,bad_exception)
+auto_ptr <ServerStateData>  empty_Factory::createServerStateData (ServerCoordinator* serverCoordinator, const GameOptionsRepository* gameOptionsRepository) const //throw(StrategyException,bad_exception)
 {
 	auto_ptr<pvector<ServerState> > states(new pvector<ServerState>());
 
@@ -67,7 +67,7 @@ auto_ptr <ServerStateData>  empty_Factory::createServerStateData (ServerCoordina
 	return auto_ptr<ServerStateData> (new ServerStateData(states, empty_ssp, empty_sharedssp));
 }
 
-auto_ptr <ClientStateData>  empty_Factory::createClientStateData (ClientCoordinator* clientCoordinator, const GameOptionsRepository* gameOptionsRepository) const throw(StrategyException,bad_exception)
+auto_ptr <ClientStateData>  empty_Factory::createClientStateData (ClientCoordinator* clientCoordinator, const GameOptionsRepository* gameOptionsRepository) const //throw(StrategyException,bad_exception)
 {
 	auto_ptr<pvector<ClientState> > states(new pvector<ClientState>());
 
@@ -83,7 +83,7 @@ auto_ptr <ClientStateData>  empty_Factory::createClientStateData (ClientCoordina
 	return auto_ptr<ClientStateData> (new ClientStateData(states,empty_csp));
 }
 
-string empty_Factory::getFinishingString() const throw(bad_exception)
+string empty_Factory::getFinishingString() const //throw(bad_exception)
 {
 	// not too long word (saves time by parsing)
 	return "empty_END";

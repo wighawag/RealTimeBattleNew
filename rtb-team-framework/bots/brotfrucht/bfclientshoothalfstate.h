@@ -39,18 +39,18 @@
 namespace Brotfrucht {
 	class BFClientShootHalfState: public BFClientBasicState {
 	public:
-		BFClientShootHalfState(ClientCoordinator* i,BFClientSpecificRepository* bfcsp,const GameOptionsRepository* go) throw (StrategyException,bad_exception);
+		BFClientShootHalfState(ClientCoordinator* i,BFClientSpecificRepository* bfcsp,const GameOptionsRepository* go); //throw (StrategyException,bad_exception);
 		
 		/**
 		* This method is called by ClientCoordinatorRevokes::resetGame()
 		*/
-		void reset () throw (bad_exception, StrategyException);
+		void reset (); //throw(bad_exception, StrategyException);
 		
 		/**
 		* This method is called when the RTB message "RobotsLeft [num]" occurs. This message is sent at the beginning of the game and after a robot has been killed.
 		* @param num The number of remaining robots
 		*/
-		void receiveRTBMessageRobotsLeft(int num) throw (StrategyException, bad_exception);
+		void receiveRTBMessageRobotsLeft(int num); //throw (StrategyException, bad_exception);
 	private:
 		double _shootInterval;
 		BFClientSpecificRepository* _bfcsp;  

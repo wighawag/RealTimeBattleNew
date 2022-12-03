@@ -44,7 +44,7 @@ namespace Brotfrucht {
  			/**
 			* Method to reset the repositories (clears number of collisions)
 			*/
-			void  BFClientSpecificRepository::reset() throw(StrategyException, bad_exception) {
+			void  BFClientSpecificRepository::reset() { //throw(StrategyException, bad_exception) {
 				_hits=0;
 				startTimer();
 			}
@@ -79,7 +79,7 @@ namespace Brotfrucht {
 			/**
 			* (Re)Start the timer with the current systemtime
 			*/
-			void BFClientSpecificRepository::startTimer() throw(StrategyException) {
+			void BFClientSpecificRepository::startTimer() { //throw(StrategyException) {
 				if (clock_gettime(CLOCK_REALTIME,&_timerstart))
 					throw StrategyException(string("Setting the timer for a new shoot failed in Brotfrucht strategy: ")+strerror(errno));
 			}
@@ -87,7 +87,7 @@ namespace Brotfrucht {
 			/**
 			 * Get nanoseconds passed since the timer was started
 			 */ 
-			double BFClientSpecificRepository::getTimePassed() const throw(StrategyException) {
+			double BFClientSpecificRepository::getTimePassed() const { //throw(StrategyException) {
 				timespec dummy;
 				if (clock_gettime(CLOCK_REALTIME,&dummy))
 					throw StrategyException(string("Getting the passed time for a new shoot failed in Brotfrucht strategy: ")+strerror(errno));
@@ -110,7 +110,7 @@ namespace Brotfrucht {
 			/**
 			 * Constructor
 			*/
-			BFClientSpecificRepository::BFClientSpecificRepository() throw(StrategyException, bad_exception): _hits(0), _logger(0),_shootingInterval(1000000000) {
+			BFClientSpecificRepository::BFClientSpecificRepository() /*throw(StrategyException, bad_exception)*/: _hits(0), _logger(0),_shootingInterval(1000000000) {
 				try {
 					_logger=MasterResourceControl::Instance()->createLogger("BrotfruchtClient");
 				}

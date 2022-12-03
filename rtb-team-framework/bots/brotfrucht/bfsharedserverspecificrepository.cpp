@@ -40,7 +40,7 @@ namespace Brotfrucht {
 	/**
 	* Method to obtain the one and only object of this class
 	*/
-	BFSharedServerSpecificRepository* BFSharedServerSpecificRepository::Instance() throw (bad_exception) {
+	BFSharedServerSpecificRepository* BFSharedServerSpecificRepository::Instance() { //throw (bad_exception) {
 		BFSharedServerSpecificRepository* bfsssp (BFSharedServerSpecificRepository::_instance.get());
 		if (bfsssp==0) {
 			BFSharedServerSpecificRepository::_instance.reset(bfsssp=new BFSharedServerSpecificRepository());
@@ -57,7 +57,7 @@ namespace Brotfrucht {
 	/**
 	 * Constructor
 	 */
-	BFSharedServerSpecificRepository::BFSharedServerSpecificRepository() throw (StrategyException, bad_exception):_robotNames(),_logger(0) {
+	BFSharedServerSpecificRepository::BFSharedServerSpecificRepository() { //throw (StrategyException, bad_exception):_robotNames(),_logger(0) {
 		try {
 			_logger=MasterResourceControl::Instance()->createLogger("BrotfruchtServer");
 		}
@@ -71,7 +71,7 @@ namespace Brotfrucht {
 	/**
 	* Method to reset the repositories (clears all names out of the vector
 	*/
-	void BFSharedServerSpecificRepository::reset() throw (bad_exception) {
+	void BFSharedServerSpecificRepository::reset() { //throw (bad_exception) {
 		_robotNames.clear();
 	}
 
@@ -79,14 +79,14 @@ namespace Brotfrucht {
 	* Appends the own robot name to the vector
 	*/
 	
-	void BFSharedServerSpecificRepository::appendRobotName(const string& robotName) throw (bad_exception) {
+	void BFSharedServerSpecificRepository::appendRobotName(const string& robotName) { //throw (bad_exception) {
 		_robotNames.push_back(robotName);
 	}
 
 	/**
 	* Gets the name of the roboter with the given index
 	*/
-	const string& BFSharedServerSpecificRepository::getRobotName (int i) const throw (bad_exception, out_of_range) {
+	const string& BFSharedServerSpecificRepository::getRobotName (int i) const { //throw (bad_exception, out_of_range) {
 		return _robotNames.at(i);
 	}
 

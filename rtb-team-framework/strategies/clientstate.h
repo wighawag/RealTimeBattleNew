@@ -65,17 +65,17 @@ public:
 	 * Processes the server tips
 	 * @param tip The server tip in string shape
 	 */
-	virtual void  reactOnServerTip (const string& tip) throw (StrategyException,bad_exception) = 0;
+	virtual void  reactOnServerTip (const string& tip); //throw (StrategyException,bad_exception) = 0;
 	/**
 	 * This method is called when all rtb messages in this round were received. After this method, the first server tips will arrive. 
 	 */
-	virtual void  roundFinished () throw (StrategyException,bad_exception) = 0;
+	virtual void  roundFinished (); //throw (StrategyException,bad_exception) = 0;
 	/**
 	 * This method is called when all server tips in this round were received. After this method, the state is to send its last messages. 
 	 */
-	virtual void  sendRTBMessages () throw (StrategyException,bad_exception) = 0;
+	virtual void  sendRTBMessages (); //throw (StrategyException,bad_exception) = 0;
 protected:
-	void setCurrentClientState (unsigned char clientStateIndex) throw(StrategyException,bad_exception);
+	void setCurrentClientState (unsigned char clientStateIndex); //throw(StrategyException,bad_exception);
 
 
 	/**
@@ -83,7 +83,7 @@ protected:
 	 * @param what What to rotate; 1 = Robot, 2 = Cannon, 4 = Radar. A sum of these values means that multiple object shall be rotated at the same time
 	 * @param omega The angular velocity in rad/s
 	 */
-	void sendRTBMessageRotate(int what,double omega) throw(bad_exception);	// >> see state.h, line 50
+	void sendRTBMessageRotate(int what,double omega); //throw(bad_exception);	// >> see state.h, line 50
 
 	/**
 	 * Requests sending "RotateTo [what] [omega] [endAngle]" to RTB, which initiates limited rotation.
@@ -91,7 +91,7 @@ protected:
 	 * @param omega The angular velocity in rad/s
 	 * @param endAngle The angle that shall be rotated to in rad
 	 */
-	void sendRTBMessageRotateTo(int what,double omega,double endAngle) throw(bad_exception);
+	void sendRTBMessageRotateTo(int what,double omega,double endAngle); //throw(bad_exception);
 
 	/**
 	 * Requests sending "RotateAmount [what] [omega] [angleDiff]" to RTB, which initiates limited rotation, too.
@@ -99,7 +99,7 @@ protected:
 	 * @param omega The angular velocity in rad/s
 	 * @param angleDiff The angle that shall be rotated in rad, relative to the robot
 	 */
-	void sendRTBMessageRotateAmount(int what,double omega,double angleDiff) throw(bad_exception);
+	void sendRTBMessageRotateAmount(int what,double omega,double angleDiff); //throw(bad_exception);
 
 	/**
 	 * Requests sending "Sweep [what] [omega] [leftAngle] [rightAngle]" to RTB, which initiates continous sweeping.
@@ -108,37 +108,37 @@ protected:
 	 * @param leftAngle The left sweeping limit angle in rad, relative to the robot
 	 * @param leftAngle The right sweeping limit angle in rad, relative to the robot
 	 */
-	void sendRTBMessageSweep(int what,double omega,double leftAngle,double rightAngle) throw(bad_exception);
+	void sendRTBMessageSweep(int what,double omega,double leftAngle,double rightAngle); //throw(bad_exception);
 
 	/**
 	 * Requests sending "Accelerate [accel]" to RTB, which sets a continuous acceleration.
 	 * @param accel The new acceleration to be set in units/s^2
 	 */
-	void sendRTBMessageAccelerate(double accel) throw(bad_exception);
+	void sendRTBMessageAccelerate(double accel); //throw(bad_exception);
 
 	/**
 	 * Requests sending "Brake [portion]" to RTB, which sets continuous braking.
 	 * @param brake The new brake deceleration to be set, the maximum value is 1.0, which means to brake with full slide friction
 	 */
-	void sendRTBMessageBrake(double portion) throw(bad_exception);
+	void sendRTBMessageBrake(double portion); //throw(bad_exception);
 
 	/**
 	 * Requests sending "Shoot [energy]" to RTB, which sends out a shot.
 	 * @param energy The energy of the new shot
 	 */
-	void sendRTBMessageShoot(double energy) throw(bad_exception);
+	void sendRTBMessageShoot(double energy); //throw(bad_exception);
 
 	/**
 	 * Requests sending "Print [message]" to RTB, which prints a message on the RTB message window.
 	 * @param message The text that shall be print
 	 */
-	void sendRTBMessagePrint(const string& message) throw(bad_exception);
+	void sendRTBMessagePrint(const string& message); //throw(bad_exception);
 
 	/**
 	 * Requests sending "Debug [message]" to RTB, which prints a message on the RTB message window if in debug mode.
 	 * @param message The text that shall be print
 	 */
-	void sendRTBMessageDebug(const string& message) throw(bad_exception);
+	void sendRTBMessageDebug(const string& message); //throw(bad_exception);
 
 	/**
 	 * Requests sending "DebugLine [angle1] [dist1] [angle2] [dist]" to RTB, which draws a line onto the RTB arena window. This method has effects only if in debug level 5.
@@ -147,7 +147,7 @@ protected:
 	 * @param angle2 and ...
 	 * @param dist2 ... The ending point of the line in polar coordinates, relative to the robot
 	 */
-	void sendRTBMessageDebugLine(double angle1,double dist1,double angle2,double dist2) throw(bad_exception);
+	void sendRTBMessageDebugLine(double angle1,double dist1,double angle2,double dist2); //throw(bad_exception);
 
 	/**
 	 * Requests sending "DebugCircle [centerAngle] [centerDist] [radius]" to RTB, which draws a circle onto the RTB arena window. This method has effects only if in debug level 5.
@@ -155,7 +155,7 @@ protected:
 	 * @param centerDist ... The center of the circle in polar coordinates, relative to the robot
 	 * @param radius The radius of the dircle
 	 */
-	void sendRTBMessageDebugCircle(double centerAngle,double centerDist,double radius) throw(bad_exception);
+	void sendRTBMessageDebugCircle(double centerAngle,double centerDist,double radius); //throw(bad_exception);
 
 private:
 	ClientCoordinator *_clientCoordinator;

@@ -50,7 +50,7 @@ namespace empty {
 			/**
 			 * Method to reset the repositories (clears number of collisions, (re)starts timer)
 			*/
-			void reset() throw(StrategyException, bad_exception);
+			void reset(); //throw(StrategyException, bad_exception);
 
 			/**
 			 * Destructor
@@ -60,7 +60,7 @@ namespace empty {
 			/**
 			 * Constructor
 			 */
-			empty_ClientSpecificRepository() throw(StrategyException, bad_exception);
+			empty_ClientSpecificRepository(); //throw(StrategyException, bad_exception);
 		private:
 	};
 }

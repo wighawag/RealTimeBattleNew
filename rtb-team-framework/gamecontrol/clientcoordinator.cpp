@@ -44,7 +44,7 @@ using std::out_of_range;
 using std::string;
 using std::ostringstream;
 
-bool ClientCoordinator::reactOnServerTip (const string& serverTip) throw (StrategyException,bad_exception) {
+bool ClientCoordinator::reactOnServerTip (const string& serverTip) { //throw (StrategyException,bad_exception) {
 	if(serverTip==_finishingString)
 	{
 		_logger->logMessage(1,"Receiving server tips has been finished, sending messages to rtb now ...");
@@ -58,7 +58,7 @@ bool ClientCoordinator::reactOnServerTip (const string& serverTip) throw (Strate
 
 ClientCoordinator::~ClientCoordinator () throw() {}
 
-ClientCoordinator::ClientCoordinator (	const GameOptionsRepository* gameOptionsRepository, RTBConnection* rtbConnection) throw (bad_exception,ResourceNotFoundException,StrategyException,ConfigNotLoadedException, KeyNotFoundException):_clientStates(0),_logger(0),_rtbConnection(rtbConnection) {
+ClientCoordinator::ClientCoordinator (	const GameOptionsRepository* gameOptionsRepository, RTBConnection* rtbConnection) { //throw (bad_exception,ResourceNotFoundException,StrategyException,ConfigNotLoadedException, KeyNotFoundException):_clientStates(0),_logger(0),_rtbConnection(rtbConnection) {
 	MasterResourceControl *mrc(MasterResourceControl::Instance());
 	const StrategyFactory *fac(mrc->getStrategyFactory(mrc->getConfigurationProperty("Strategy","StrategyName")));
 	auto_ptr<ClientStateData> csd(fac->createClientStateData(this,gameOptionsRepository));
@@ -73,7 +73,7 @@ State* ClientCoordinator::getCurrentState () throw () {
 	return currentClientState;
 }
 
-void ClientCoordinator::resetGame () throw (StrategyException,bad_exception) {
+void ClientCoordinator::resetGame () { //throw (StrategyException,bad_exception) {
 	// this line is necessary
 	_messageBuffer.clear();
 	_messageBuffer.str(_emptyString);
@@ -86,13 +86,13 @@ void ClientCoordinator::resetGame () throw (StrategyException,bad_exception) {
 	_logger->logMessage(4,"The game has been reset.");		
 }
 
-void ClientCoordinator::processReceivedRTBMessages () throw (StrategyException,bad_exception) {
+void ClientCoordinator::processReceivedRTBMessages () { //throw (StrategyException,bad_exception) {
 // Calls roundFinished on the current client state object.
 	_logger->logMessage(1,"Receiving RTB Messages has been finished.");
 	currentClientState->roundFinished();
 }
 
-void ClientCoordinator::setCurrentClientState (unsigned char clientStateIndex) throw (StrategyException,bad_exception) {
+void ClientCoordinator::setCurrentClientState (unsigned char clientStateIndex) { //throw (StrategyException,bad_exception) {
 	ostringstream O;
 	O << int (clientStateIndex);
 	currentClientStateName=O.str();
@@ -105,7 +105,7 @@ void ClientCoordinator::setCurrentClientState (unsigned char clientStateIndex) t
 	_logger->logMessage(3,"State has changed to No. "+currentClientStateName);
 }
 
-void ClientCoordinator::flushMessages() throw (bad_exception)
+void ClientCoordinator::flushMessages() //throw (bad_exception)
 {
 	_rtbConnection->sendLine(_messageBuffer.str());
 	// this line is necessary
@@ -114,7 +114,7 @@ void ClientCoordinator::flushMessages() throw (bad_exception)
 	_logger->logMessage(2,"Sending messages to RTB complete.");
 }
 
-string ClientCoordinator::getAssociatedRobotName () throw (bad_exception)
+string ClientCoordinator::getAssociatedRobotName () //throw (bad_exception)
 {
 	return _rtbConnection->getTargetName();
 }

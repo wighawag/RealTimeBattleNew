@@ -43,7 +43,7 @@ void ServerState::setCurrentServerState (unsigned char serverStateIndex) throw()
 	_serverCoordinator->setCurrentServerState(serverStateIndex);
 }
 
-void ServerState::sendServerTipString (const string& tip) throw(StrategyException,bad_exception) {
+void ServerState::sendServerTipString (const string& tip) { //throw(StrategyException,bad_exception) {
 	_serverCoordinator->tipBuffer() << tip << endl;
 }
 

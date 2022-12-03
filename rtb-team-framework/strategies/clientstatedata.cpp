@@ -34,7 +34,7 @@
 using Strategies::ClientStateData;
 
 ClientStateData::ClientStateData (	auto_ptr < pvector <ClientState > > states,
-					auto_ptr <ClientSpecificRepository> rep	) throw(bad_exception) : clientStates(states),clientSpecificRepository(rep) {
+					auto_ptr <ClientSpecificRepository> rep	) /*throw(bad_exception)*/ : clientStates(states),clientSpecificRepository(rep) {
 	
 }
 

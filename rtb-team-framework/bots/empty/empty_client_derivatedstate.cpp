@@ -35,7 +35,7 @@
 
 
 namespace empty {
-	empty_ClientDerivatedState::empty_ClientDerivatedState(ClientCoordinator* i, empty_ClientSpecificRepository* empty_csp, const GameOptionsRepository* empty_gor) throw (bad_exception, StrategyException):empty_ClientBasicState(i, empty_csp, empty_gor) {}	
+	empty_ClientDerivatedState::empty_ClientDerivatedState(ClientCoordinator* i, empty_ClientSpecificRepository* empty_csp, const GameOptionsRepository* empty_gor) /*throw (bad_exception, StrategyException)*/:empty_ClientBasicState(i, empty_csp, empty_gor) {}	
 	
 	/**
 	* Implement here the methods, you want to overwrite

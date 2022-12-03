@@ -55,12 +55,12 @@ namespace empty {
 			/**
 			 * Method to obtain the one and only object of this class
 			 */
-			static empty_SharedServerSpecificRepository* Instance() throw (bad_exception);
+			static empty_SharedServerSpecificRepository* Instance(); //throw (bad_exception);
 			
 			/**
 			 * Method to reset the repositories
 			 */
-			void reset() throw (bad_exception);
+			void reset(); //throw (bad_exception);
 
 			/**
 			 * Destructor
@@ -77,7 +77,7 @@ namespace empty {
 			 /**
 			  * Constructor
 			  */
-			 empty_SharedServerSpecificRepository()throw (StrategyException, bad_exception);
+			 empty_SharedServerSpecificRepository(); //throw (StrategyException, bad_exception);
 
 	};
 }

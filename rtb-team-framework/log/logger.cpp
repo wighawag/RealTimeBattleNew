@@ -46,7 +46,7 @@ namespace Log {
 	 * @param logDriver use for example unixlogdriver to log the messages in a file
 	 * @exception bad_exception 
 	 */
-	Logger::Logger(const string& section, int priority, auto_ptr <LogDriver> logDriver) throw(bad_exception): _logDriver(logDriver), _section(section), _priority(priority)  {
+	Logger::Logger(const string& section, int priority, auto_ptr <LogDriver> logDriver) { //throw(bad_exception): _logDriver(logDriver), _section(section), _priority(priority)  {
 	}
 	/**
 	 * Do nothing
@@ -73,7 +73,7 @@ namespace Log {
 	 * @param message this string will be logged
 	 * @exception IOException will be thrown if the logdriver can not write...
 	*/
-	void  Logger::logMessage (int priority, const string& message) throw (bad_exception, IOException) {
+	void  Logger::logMessage (int priority, const string& message) { //throw (bad_exception, IOException) {
 		if (isPriorityHighEnough(priority)) {
 			try {
 				_logDriver->logMessage(_section+": "+message);

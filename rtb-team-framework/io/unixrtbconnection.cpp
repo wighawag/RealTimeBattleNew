@@ -36,6 +36,7 @@
 #include <iostream>
 #include <sstream>
 #include <ios>
+#include <unistd.h>
 
 /**
  * Namespace
@@ -56,7 +57,7 @@ namespace IO {
 	/**
 	 * Constructor (private)
 	 */
-	UnixRTBConnection::UnixRTBConnection () throw(bad_exception)
+	UnixRTBConnection::UnixRTBConnection () //throw(bad_exception)
 	: _inStream(0), _outStream(1) /*means getLine to stdin(fd=0) and sendLine to stdout(fd=1)*/ {
 	}
 	/**
@@ -71,7 +72,7 @@ namespace IO {
 	 * this static method is the only way to get an instance from UnixRTBConnetion (singleton)
 	 * @return Pointer to UnixRTBConnection
 	 */
-	UnixRTBConnection* UnixRTBConnection::instance() throw(bad_exception) {
+	UnixRTBConnection* UnixRTBConnection::instance() { //throw(bad_exception) {
 		UnixRTBConnection* rtbConnection(UnixRTBConnection::_instance.get());
 		if( rtbConnection == 0 )
 			UnixRTBConnection::_instance.reset(rtbConnection = new UnixRTBConnection);
@@ -82,7 +83,7 @@ namespace IO {
 	 * 
 	 * @param line Message that will be send over the connection (does not append a trailing newline)
 	 */
-	void UnixRTBConnection::sendLine (const string& line) throw(StrategyException, IOException, bad_exception) {
+	void UnixRTBConnection::sendLine (const string& line) { //throw(StrategyException, IOException, bad_exception) {
 		try {
 			_outStream << line;
 		}
@@ -94,7 +95,7 @@ namespace IO {
 	/**
 	 * @return string that contains a line out of the connection (not terminated with newline)
 	 */
-	string UnixRTBConnection::getLine () throw(IOException, bad_exception) {
+	string UnixRTBConnection::getLine () { //throw(IOException, bad_exception) {
 		string line;
 		
 		try {
@@ -110,7 +111,7 @@ namespace IO {
 	/**
 	 * @return name of the associated target
 	 */
-	string UnixRTBConnection::getTargetName () throw(IOException, bad_exception) {
+	string UnixRTBConnection::getTargetName () { //throw(IOException, bad_exception) {
 		
 		//get ActualName
 		MasterResourceControl* mrc = MasterResourceControl::Instance();

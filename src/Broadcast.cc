@@ -116,7 +116,7 @@ Broadcast::Broadcast()
     rdbuf(&buffer);
 }
 
-Broadcast* Broadcast::Instance () throw(bad_exception)
+Broadcast* Broadcast::Instance () // throw(bad_exception)
 {
     Broadcast* bcast(Broadcast::_instance.get());
     if(bcast==0){

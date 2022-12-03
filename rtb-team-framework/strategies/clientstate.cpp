@@ -41,42 +41,42 @@ using Exceptions::StrategyException;
 
 ClientState::ClientState(ClientCoordinator* c) throw():_clientCoordinator(c) {}
 	
-void ClientState::setCurrentClientState (unsigned char clientStateIndex) throw (StrategyException,bad_exception) {
+void ClientState::setCurrentClientState (unsigned char clientStateIndex) { //throw (StrategyException,bad_exception) {
 	_clientCoordinator->setCurrentClientState(clientStateIndex);
 }
 
 ClientState::~ClientState() throw() {};
 
-void ClientState::sendRTBMessageRotate(int what,double omega) throw (bad_exception)
+void ClientState::sendRTBMessageRotate(int what,double omega) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"Rotate "<<what<<' '<<omega<<endl;}
 
-void ClientState::sendRTBMessageRotateTo(int what,double omega,double endAngle) throw (bad_exception)
+void ClientState::sendRTBMessageRotateTo(int what,double omega,double endAngle) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"RotateTo "<<what<<' '<<omega<<' '<<endAngle<<endl;}
 
-void ClientState::sendRTBMessageRotateAmount(int what,double omega,double angleDiff) throw (bad_exception)
+void ClientState::sendRTBMessageRotateAmount(int what,double omega,double angleDiff) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"RotateAmount "<<what<<' '<<omega<<' '<<angleDiff<<endl;}
 
-void ClientState::sendRTBMessageSweep(int what,double omega,double leftAngle,double rightAngle) throw (bad_exception)
+void ClientState::sendRTBMessageSweep(int what,double omega,double leftAngle,double rightAngle) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"Sweep "<<what<<' '<<omega<<' '<<leftAngle<<' '<<rightAngle<<endl;}
 
-void ClientState::sendRTBMessageAccelerate(double accel) throw (bad_exception)
+void ClientState::sendRTBMessageAccelerate(double accel) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"Accelerate "<<accel<<endl;}
 
-void ClientState::sendRTBMessageBrake(double portion) throw (bad_exception)
+void ClientState::sendRTBMessageBrake(double portion) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"Brake "<<portion<<endl;}
 
-void ClientState::sendRTBMessageShoot(double energy) throw (bad_exception)
+void ClientState::sendRTBMessageShoot(double energy) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"Shoot "<<energy<<endl;}
 
-void ClientState::sendRTBMessagePrint(const string& message) throw (bad_exception)
+void ClientState::sendRTBMessagePrint(const string& message) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"Print "<<message<<endl;}
 
-void ClientState::sendRTBMessageDebug(const string& message) throw (bad_exception)
+void ClientState::sendRTBMessageDebug(const string& message) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"Debug "<<message<<endl;}
 
-void ClientState::sendRTBMessageDebugLine(double angle1,double dist1,double angle2,double dist2) throw (bad_exception)
+void ClientState::sendRTBMessageDebugLine(double angle1,double dist1,double angle2,double dist2) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"DebugLine "<<angle1<<' '<<dist1<<' '<<angle2<<' '<<dist2<<endl;}
 
-void ClientState::sendRTBMessageDebugCircle(double centerAngle,double centerDist,double radius) throw (bad_exception)
+void ClientState::sendRTBMessageDebugCircle(double centerAngle,double centerDist,double radius) //throw (bad_exception)
 	{_clientCoordinator->messageBuffer()<<"DebugCircle "<<centerAngle<<' '<<centerDist<<' '<<radius<<endl;}
 

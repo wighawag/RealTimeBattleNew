@@ -33,7 +33,7 @@
 
 using Strategies::ServerStateData;
 
-ServerStateData::ServerStateData (auto_ptr < pvector <ServerState> > states, auto_ptr <InternalServerSpecificRepository> irep,SharedServerSpecificRepository* srep) throw(bad_exception): serverStates(states),internalServerSpecificRepository(irep),sharedServerSpecificRepository(srep)
+ServerStateData::ServerStateData (auto_ptr < pvector <ServerState> > states, auto_ptr <InternalServerSpecificRepository> irep,SharedServerSpecificRepository* srep) /*throw(bad_exception)*/: serverStates(states),internalServerSpecificRepository(irep),sharedServerSpecificRepository(srep)
 {
 }
 

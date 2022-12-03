@@ -37,14 +37,14 @@
 
 
 namespace Brotfrucht {
-	BFServerBasicState::BFServerBasicState(ServerCoordinator* i,BFInternalServerSpecificRepository* bfssp,BFSharedServerSpecificRepository* bfsharedssp) throw (StrategyException,bad_exception):ServerState(i),_bfssp(bfssp),_robotName(i->getAssociatedRobotName()),_bfsharedssp(bfsharedssp) {}
+	BFServerBasicState::BFServerBasicState(ServerCoordinator* i,BFInternalServerSpecificRepository* bfssp,BFSharedServerSpecificRepository* bfsharedssp) /*throw (StrategyException,bad_exception)*/:ServerState(i),_bfssp(bfssp),_robotName(i->getAssociatedRobotName()),_bfsharedssp(bfsharedssp) {}
 	
 	BFServerBasicState::~BFServerBasicState () throw() {}
 	
 	/**
 	 * This method is called from the coordinator's processReceivedRTBMessages method and should send tips to the clients.
 	 */
-	void  BFServerBasicState::sendServerTips () throw (StrategyException,bad_exception) {
+	void  BFServerBasicState::sendServerTips () { //throw (StrategyException,bad_exception) {
 		// When this method is called first in a game (for all server states (static variable), print out the registered robots of the repository
 		if (_newGame) {
 			_newGame=false;
@@ -63,7 +63,7 @@ namespace Brotfrucht {
 	/**
 	* This method is called by ServerCoordinatorRevokes::resetGame()
 	*/
-	void BFServerBasicState::reset () throw (bad_exception, StrategyException) {
+	void BFServerBasicState::reset () { //throw (bad_exception, StrategyException) {
 		_newGame=true;
 	}
 
@@ -73,7 +73,7 @@ namespace Brotfrucht {
 	* @param type The type of the observed object
 	* @param angle The angle the observed object is seen at in rad, relative to the robot front
 	*/
-	void BFServerBasicState::receiveRTBMessageRadar(double dist,object_type type,double angle) throw (StrategyException, bad_exception) {}
+	void BFServerBasicState::receiveRTBMessageRadar(double dist,object_type type,double angle) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "Info [time] [speed] [cannonAngle]" occurs. This message is sent each turn and gives information about the robot itself.
@@ -81,7 +81,7 @@ namespace Brotfrucht {
 	* @param speed The velocity of the robot
 	* @param cannonAngle The angle the cannon points to
 	*/
-	void BFServerBasicState::receiveRTBMessageInfo(double time,double speed,double cannonAngle) throw (StrategyException, bad_exception) {}
+	void BFServerBasicState::receiveRTBMessageInfo(double time,double speed,double cannonAngle) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "Coordinates [x] [y] [angle]" occurs. Generally, this message is sent each turn. If the game option SEND_ROBOT_COORDINATES is sent to 2, absolute coordinates are sent. If this value is 1, the coordinates are given relative to the starting point. On the case 0, this message is not sent.
@@ -89,7 +89,7 @@ namespace Brotfrucht {
 	* @param y ... are the sent coordinates
 	* @param angle is the angle the robot front points to
 	*/
-	void BFServerBasicState::receiveRTBMessageCoordinates(double x,double y,double angle) throw (StrategyException, bad_exception) {
+	void BFServerBasicState::receiveRTBMessageCoordinates(double x,double y,double angle) { //throw (StrategyException, bad_exception) {
 		_bfssp->setRobotPosition(x,y);
 	}
 
@@ -98,33 +98,33 @@ namespace Brotfrucht {
 	* @param energy The unexact energy level of the detected robot
 	* @param isTeamMate Defines whether the robot is a team mate (team mode is not yet implemented in RTB)
 	*/
-	void BFServerBasicState::receiveRTBMessageRobotInfo(double energy,bool isTeamMate) throw (StrategyException, bad_exception) {}
+	void BFServerBasicState::receiveRTBMessageRobotInfo(double energy,bool isTeamMate) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "RotationReached [what]" occurs. In our case, this message is sent, when a rotation initiated by "RotateTo" or "RotateAmount" has finished or the sweeping has changed direction.
 	* param what What this message bears on; 1 = Robot, 2 = Cannon, 4 = Radar
 	*/
-	void BFServerBasicState::receiveRTBMessageRotationReached(int what) throw (StrategyException, bad_exception) {}	// >> Maybe we should introduce another
+	void BFServerBasicState::receiveRTBMessageRotationReached(int what) {} //throw (StrategyException, bad_exception) {}	// >> Maybe we should introduce another
 									//    enum for this (TODO)
 
 	/**
 	* This method is called when the RTB message "Energy [energy]" occurs. This message is sent at the end of each turn and specifies the health state of the robot.
 	* @param energy The unexact energy level
 	*/
-	void BFServerBasicState::receiveRTBMessageEnergy(double energy) throw (StrategyException, bad_exception) {}
+	void BFServerBasicState::receiveRTBMessageEnergy(double energy) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "RobotsLeft [num]" occurs. This message is sent at the beginning of the game and after a robot has been killed.
 	* @param num The number of remaining robots
 	*/
-	void BFServerBasicState::receiveRTBMessageRobotsLeft(int num) throw (StrategyException, bad_exception) {}
+	void BFServerBasicState::receiveRTBMessageRobotsLeft(int num) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "Collision [type] [angle]" occurs. This message is sent whan the robot has been hit by or hits another object,
 	* @param type The type of the hit object
 	* @param angle The angle the collision happened at in rad, relative to the robot front
 	*/
-	void BFServerBasicState::receiveRTBMessageCollision(object_type type,double angle) throw (StrategyException, bad_exception) {
+	void BFServerBasicState::receiveRTBMessageCollision(object_type type,double angle) { //throw (StrategyException, bad_exception) {
 		double x,y;
 		_bfssp->getRobotPosition(x,y);
 		_numberconv << "x: " << x << " y: " << y;
@@ -138,12 +138,12 @@ namespace Brotfrucht {
 	* @param warning The type of the warning
 	* @param message The text of the warning
 	*/
-	void BFServerBasicState::receiveRTBMessageWarning(warning_type warning,const string& message) throw (StrategyException, bad_exception) {}
+	void BFServerBasicState::receiveRTBMessageWarning(warning_type warning,const string& message) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "Dead" occurs. This message is sent when the robot pegs out.
 	*/
-	void BFServerBasicState::receiveRTBMessageDead() throw (StrategyException, bad_exception) {}
+	void BFServerBasicState::receiveRTBMessageDead() {} //throw (StrategyException, bad_exception) {}
 	
 	bool BFServerBasicState::_newGame(false);
 }

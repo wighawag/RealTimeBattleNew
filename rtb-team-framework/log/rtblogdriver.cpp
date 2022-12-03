@@ -63,7 +63,7 @@ namespace Log {
 	* Constructor for the first RTBLogDriver object
 	* Constructor will register the object by the MRC with the name RTBLogDriver
 	*/
-	RTBLogDriver::RTBLogDriver() throw (bad_exception):_rtbConnection(NULL),_rtbLogState(UNINITIALIZED) {
+	RTBLogDriver::RTBLogDriver() /*throw (bad_exception)*/:_rtbConnection(NULL),_rtbLogState(UNINITIALIZED) {
 		// we cannot obtain a handle to the RTBConnection here, because the IOFactory is possibly not registered yet 
 		// (we do not know anything about the order of global object construction)
 		
@@ -79,7 +79,7 @@ namespace Log {
 	/**
 	* Method that is called by the MRC to duplicate the whole object
 	*/
-	auto_ptr <LogDriver>  RTBLogDriver::clone () const throw (bad_exception)
+	auto_ptr <LogDriver>  RTBLogDriver::clone () const //throw (bad_exception)
 	{
 		return auto_ptr<LogDriver>(new RTBLogDriver(_rtbConnection,_rtbLogState));
 		
@@ -91,7 +91,7 @@ namespace Log {
 	* @param message Message that will be logged in the file
 	* If logger object was not initialized properly, this method will only throw an exception
 	*/
-	void  RTBLogDriver::logMessage (const string& message) throw (IOException, bad_exception) 
+	void  RTBLogDriver::logMessage (const string& message) //throw (IOException, bad_exception) 
 	{
 		switch (_rtbLogState) {
 			case UNINITIALIZED:
@@ -120,7 +120,7 @@ namespace Log {
 	 * logCommand:Print : Use the Print command to log messages
 	 * logCommand:Both  : Use the Print and the Debug command to log messages		
 	 */
-	void  RTBLogDriver::setLogDriverParameters (const string& logDriverParameters)  throw (IOException, bad_exception) 
+	void  RTBLogDriver::setLogDriverParameters (const string& logDriverParameters)  //throw (IOException, bad_exception) 
 	{
 		// first set state to something that prevents logging with incorrect parameters
 		_rtbLogState=UNINITIALIZED;

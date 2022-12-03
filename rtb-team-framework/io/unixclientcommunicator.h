@@ -57,7 +57,7 @@ namespace IO {
 		/**
 		 * Constructors
 		 */
-		UnixClientCommunicator () throw(IOException, bad_exception);
+		UnixClientCommunicator (); //throw(IOException, bad_exception);
 		
 		 
 		/*
@@ -73,7 +73,7 @@ namespace IO {
          * Establish connection to server.
 		 * @return Connection to communicator directly with the server.
 		 */
-		ServerConnection* getServerConnection () throw(IOException, bad_exception);
+		ServerConnection* getServerConnection (); //throw(IOException, bad_exception);
 			
 		
 	/*
@@ -112,7 +112,7 @@ namespace IO {
 		/**
 		 * Obtains a ServerConnection by connecting to the already available unix-domain-socket
 		 */
-		void obtainServerConnection() throw(IOException, bad_exception);
+		void obtainServerConnection(); //throw(IOException, bad_exception);
 	};
 }
 

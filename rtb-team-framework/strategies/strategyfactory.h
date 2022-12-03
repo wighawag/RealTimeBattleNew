@@ -64,7 +64,7 @@ namespace Strategies {
 		* @param serverCoordinator This object should be passed in all constructors of the created state objects.
 		* @param gameOptionsRepository This object should also be passed in all constructors of the created state objects.
 		*/
-		virtual auto_ptr <ServerStateData>  createServerStateData (ServerCoordinator* serverCoordinator, const GameOptionsRepository* gameOptionsRepository) const throw(StrategyException,bad_exception) = 0;
+		virtual auto_ptr <ServerStateData>  createServerStateData (ServerCoordinator* serverCoordinator, const GameOptionsRepository* gameOptionsRepository) const = 0; //throw(StrategyException,bad_exception) = 0;
 		
 	
 		/**
@@ -72,13 +72,13 @@ namespace Strategies {
 		* @param clientCoordinator This object should be passed in all constructors of the created state objects.
 		* @param gameOptionsRepository This object should also be passed in all constructors of the created state objects.
 		*/
-		virtual auto_ptr <ClientStateData>  createClientStateData (ClientCoordinator* clientCoordinator, const GameOptionsRepository* gameOptionsRepository) const throw(StrategyException,bad_exception) = 0;
+		virtual auto_ptr <ClientStateData>  createClientStateData (ClientCoordinator* clientCoordinator, const GameOptionsRepository* gameOptionsRepository) const = 0; //throw(StrategyException,bad_exception) = 0;
 		
 		/**
 		* Returns the string indicating that the server tips have finished.
 		* Note: The value of this string must not be used as a normel server tip.
 		*/
-		virtual string getFinishingString() const throw(bad_exception) = 0;
+		virtual string getFinishingString() const = 0; //throw(bad_exception) = 0;
 		
 		/**
 		* 

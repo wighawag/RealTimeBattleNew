@@ -48,7 +48,7 @@ namespace Parser {
 	using std::getline;
 	
 	
-	ConfigurationParser::ConfigurationParser() throw (bad_exception)
+	ConfigurationParser::ConfigurationParser() //throw (bad_exception)
 	{
 	}
 	
@@ -67,11 +67,11 @@ namespace Parser {
 	bool ConfigurationParser::iscchar(int c) const throw ()
 	{
 		return isgraph(c) || c==' ' || c=='\t' || 
-			c=='ß' || c=='ä' || c=='ö' || c=='ü' ||
-			c=='Ä' || c=='Ö' || c=='Ü';
+			c=='ï¿½' || c=='ï¿½' || c=='ï¿½' || c=='ï¿½' ||
+			c=='ï¿½' || c=='ï¿½' || c=='ï¿½';
 	}
 	
-	string ConfigurationParser::erase_wspace(const string& s) const throw (bad_exception)
+	string ConfigurationParser::erase_wspace(const string& s) const //throw (bad_exception)
 	{
 		string dst;
 		int i;
@@ -96,7 +96,7 @@ namespace Parser {
 		return dst;
 	}
 	
-	void ConfigurationParser::addFile(const string& filename) throw (ParserException, bad_exception)
+	void ConfigurationParser::addFile(const string& filename) //throw (ParserException, bad_exception)
 	{
 		ostringstream section, key, value;
 		string currentsection, currentkey, currentvalue;

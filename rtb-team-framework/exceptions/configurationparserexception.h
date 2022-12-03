@@ -53,13 +53,13 @@ namespace Exceptions {
 		/*
 		* Constructors
 		*/
-		ConfigurationParserException(const string& file, int line, const string& error) throw (bad_exception);
+		ConfigurationParserException(const string& file, int line, const string& error); //throw (bad_exception);
 		/*
 		* Destructor
 		*/
 		virtual ~ConfigurationParserException() throw ();
 	private:
-		static string message(const string& filename, int line, const string& error) throw (bad_exception);
+		static string message(const string& filename, int line, const string& error); //throw (bad_exception);
 	};
 }
 

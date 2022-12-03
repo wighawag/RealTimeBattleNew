@@ -42,7 +42,7 @@ namespace Brotfrucht {
 	using RTBGlobal::MasterResourceControl;
 	using Exceptions::RTBException;
 
-	BFClientShootHalfState::BFClientShootHalfState(ClientCoordinator* i,BFClientSpecificRepository* bfcsp,const GameOptionsRepository* go) throw (StrategyException,bad_exception):BFClientBasicState(i,bfcsp,go),_shootInterval(0),_bfcsp(bfcsp) {
+	BFClientShootHalfState::BFClientShootHalfState(ClientCoordinator* i,BFClientSpecificRepository* bfcsp,const GameOptionsRepository* go) /*throw (StrategyException,bad_exception)*/:BFClientBasicState(i,bfcsp,go),_shootInterval(0),_bfcsp(bfcsp) {
 		// obtain shooting frequency
 		string shootingInterval;
 		try {
@@ -63,7 +63,7 @@ namespace Brotfrucht {
 	/**
 	* This method is called by ClientCoordinatorRevokes::resetGame()
 	*/
-	void BFClientShootHalfState::reset () throw (bad_exception, StrategyException) {
+	void BFClientShootHalfState::reset () { //throw (bad_exception, StrategyException) {
 		BFClientBasicState::reset();
 		_bfcsp->setShootingInterval(_shootInterval);
 		_no_robot_died=true;
@@ -73,7 +73,7 @@ namespace Brotfrucht {
 	* This method is called when the RTB message "RobotsLeft [num]" occurs. This message is sent at the beginning of the game and after a robot has been killed.
 	* @param num The number of remaining robots
 	*/
-	void BFClientShootHalfState::receiveRTBMessageRobotsLeft(int num) throw (StrategyException, bad_exception) {
+	void BFClientShootHalfState::receiveRTBMessageRobotsLeft(int num) { //throw (StrategyException, bad_exception) {
 		BFClientBasicState::receiveRTBMessageRobotsLeft(num);
 		if (!_no_robot_died) {
 			_bfcsp->getLogger()->logMessage(1,"Another robot died, doubling shoot frequency...");

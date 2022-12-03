@@ -80,7 +80,7 @@ namespace GameControl {
 	/**
 	* 
 	*/
-	bool ServerGameController::start () throw (bad_exception) {
+	bool ServerGameController::start () { //throw (bad_exception) {
 		// main exception block 
 		try {
 			_logger->logMessage(3,"Starting main method in ServerGameController");
@@ -281,7 +281,7 @@ namespace GameControl {
 	/**
 	* 
 	*/
-	ServerGameController::ServerGameController (auto_ptr <ServerCommunicator> serverCommunicator) throw (RTBException, bad_exception):_rtbConnection(0),_serverCommunicator(serverCommunicator),_logger(0),_numberRobots(0),_numberAliveRobots(0), _localClientCoordinator(0),_localServerCoordinator(0) {
+	ServerGameController::ServerGameController (auto_ptr <ServerCommunicator> serverCommunicator) { //throw (RTBException, bad_exception):_rtbConnection(0),_serverCommunicator(serverCommunicator),_logger(0),_numberRobots(0),_numberAliveRobots(0), _localClientCoordinator(0),_localServerCoordinator(0) {
 		// get MRC
 		_mrc=MasterResourceControl::Instance();
 		// get Logger

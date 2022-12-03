@@ -49,7 +49,7 @@ namespace Parser {
 	istringstream RTBParser::_parsingStream;
 	string RTBParser::_tmpString;
 
-	const RTBParseResult* RTBParser::processRTBMessage (const string& message) throw(ParserException, bad_exception)
+	const RTBParseResult* RTBParser::processRTBMessage (const string& message) //throw(ParserException, bad_exception)
 	{
 		// this line is necessary, too
 		_parsingStream.clear();
@@ -145,7 +145,7 @@ namespace Parser {
 		throw ParserException(_parseResult.stringValue);
 	}
 
-	void RTBParser::delegateLastMessage (Coordinator* coordinator) throw (StrategyException,bad_exception)
+	void RTBParser::delegateLastMessage (Coordinator* coordinator) //throw (StrategyException,bad_exception)
 	{
 		switch(_parseResult.messageType)
 		{
@@ -193,7 +193,7 @@ namespace Parser {
 		}
 	}
 
-	void RTBParser::updateGameOptions (GameOptionsRepository* gameOptionsRepository) throw(ParserException,bad_exception)
+	void RTBParser::updateGameOptions (GameOptionsRepository* gameOptionsRepository) //throw(ParserException,bad_exception)
 	{
 		if(_parseResult.messageType!=GAME_OPTION) throw ParserException("Parser was requested to update a game option without a concrete game option specified.");
 		switch(game_option_type(_parseResult.intValue[0]))

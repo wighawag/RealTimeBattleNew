@@ -87,7 +87,7 @@ namespace RTBGlobal {
 		/**
 		* Obtains the one and only MasterResourceControl object (singleton)
 		*/
-		static MasterResourceControl*  Instance () throw (bad_exception);
+		static MasterResourceControl*  Instance (); //throw (bad_exception);
 		
 	
 		/**
@@ -101,7 +101,7 @@ namespace RTBGlobal {
 		* Register the one and only IOFactory with this method
 		* @param ioFactory pointer to the specific IOFactory
 		*/
-		void  registrateIOFactory (auto_ptr<IOFactory> ioFactory) throw (bad_exception);
+		void  registrateIOFactory (auto_ptr<IOFactory> ioFactory); //throw (bad_exception);
 		
 	
 		/**
@@ -109,7 +109,7 @@ namespace RTBGlobal {
 		* @param strategyName Strings the Coordinators will use to obtain the factory
 		* @param strategyFactory pointer to a concrete strategy factory
 		*/
-		void  registrateStrategyFactory (const string& strategyName, auto_ptr<StrategyFactory> strategyFactory) throw (bad_exception);
+		void  registrateStrategyFactory (const string& strategyName, auto_ptr<StrategyFactory> strategyFactory); //throw (bad_exception);
 		
 	
 		/**
@@ -117,40 +117,40 @@ namespace RTBGlobal {
 		* @param logDriverName name of the log Driver
 		* @param logDriverPrototype concrete prototype of logDriver (to be cloned every time)
 		*/
-		void  registrateLogDriverPrototype (const string& logDriverName, auto_ptr<LogDriver> logDriverPrototype) throw (bad_exception);
+		void  registrateLogDriverPrototype (const string& logDriverName, auto_ptr<LogDriver> logDriverPrototype); //throw (bad_exception);
 		
 	
 		/** 
 		* @return (ClientGameController object if MasterServerSocket is already created, if not ServerGameController object)
 		*/
-		auto_ptr <GameController>  getGameController () const throw (ResourceNotFoundException, bad_exception);
+		auto_ptr <GameController>  getGameController () const; //throw (ResourceNotFoundException, bad_exception);
 		
 	
 		/**
 		* @return the registered IOFactory
 		*/
-		const IOFactory*  getIOFactory () const throw (ResourceNotFoundException, bad_exception);
+		const IOFactory*  getIOFactory () const; //throw (ResourceNotFoundException, bad_exception);
 		
 	
 		/**
 		* @return strategy factory that will be able to create the needed state objects.
 		* @param strategyName Names the strategy that will be created from the returned factory.
 		*/
-		const StrategyFactory*  getStrategyFactory (const string& strategyName) const throw (ResourceNotFoundException, bad_exception);
+		const StrategyFactory*  getStrategyFactory (const string& strategyName) const; //throw (ResourceNotFoundException, bad_exception);
 		
 	
 		/**
 		* Creates a logger object, fills it with the the section's associated logDriver
 		* @param section Section for that the logger should work
 		*/
-		auto_ptr <Logger>  createLogger (const string& section) const throw (ResourceNotFoundException, bad_exception);
+		auto_ptr <Logger>  createLogger (const string& section) const; //throw (ResourceNotFoundException, bad_exception);
 		
 	
 		/**
 		* 
 		* @param configurationData Contains a map, that maps a section to a map, that maps a key to a value.
 		*/
-		void  setConfigurationData (const map<string, map<string, string> >& configurationData) throw (bad_exception);
+		void  setConfigurationData (const map<string, map<string, string> >& configurationData); //throw (bad_exception);
 		
 	
 		/**
@@ -158,7 +158,7 @@ namespace RTBGlobal {
 		* @param section Names the section.
 		* @param key Names the configuration key.
 		*/
-		const string&  getConfigurationProperty (const string& section, const string& key) const throw (ConfigNotLoadedException, KeyNotFoundException, bad_exception);
+		const string&  getConfigurationProperty (const string& section, const string& key) const; //throw (ConfigNotLoadedException, KeyNotFoundException, bad_exception);
 		
 	
 		/**
@@ -167,7 +167,7 @@ namespace RTBGlobal {
 		* @param key Names the runtime key.
 		* @param value Names the associated value.
 		*/
-		void  setRuntimeProperty (const string& section, const string& key, const string& value) throw (bad_exception);
+		void  setRuntimeProperty (const string& section, const string& key, const string& value); //throw (bad_exception);
 		
 	
 		/**
@@ -175,7 +175,7 @@ namespace RTBGlobal {
 		* @param section Names the requested section.
 		* @param key Names the requested key.
 		*/
-		const string&  getRuntimeProperty (const string& section, const string& key) const throw ( KeyNotFoundException, bad_exception);
+		const string&  getRuntimeProperty (const string& section, const string& key) const; //throw ( KeyNotFoundException, bad_exception);
 		
 	private:
 		/*
@@ -216,7 +216,7 @@ namespace RTBGlobal {
 		/**
 		* Private constructor (singleton pattern)
 		*/
-		MasterResourceControl() throw (bad_exception);
+		MasterResourceControl(); //throw (bad_exception);
 		
 	
 	};

@@ -77,7 +77,7 @@ class ClientGameController : public GameController {
 		* it represents the discrete control loop method of the client. See the petrinets and sequence diagrams for
 		* further details.
 		*/
-		bool  start() throw (bad_exception) ;
+		bool  start(); //throw (bad_exception) ;
 		
 	
 		/**
@@ -85,7 +85,7 @@ class ClientGameController : public GameController {
 		* Constructor will pass any exceptions to its creator (since logger may be initialized incorrect)
 		* @param clientCommunicator 
 		*/
-		ClientGameController (auto_ptr <ClientCommunicator> clientCommunicator) throw (RTBException, bad_exception);
+		ClientGameController (auto_ptr <ClientCommunicator> clientCommunicator); //throw (RTBException, bad_exception);
 		
 	
 	/*

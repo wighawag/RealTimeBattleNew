@@ -58,7 +58,7 @@ namespace IO {
 	/**
 	 * Constructors
 	 */
-	UnixClientCommunicator::UnixClientCommunicator () throw(IOException, bad_exception) 
+	UnixClientCommunicator::UnixClientCommunicator () //throw(IOException, bad_exception) 
 	: _serverConnection(0), _serverConnectionInv(false), _mrc(MasterResourceControl::Instance()) {
 		
 		//obtain logger		
@@ -83,7 +83,7 @@ namespace IO {
 	/**
 	 * Methods
 	 */
-	void UnixClientCommunicator::obtainServerConnection() throw(IOException, bad_exception) {
+	void UnixClientCommunicator::obtainServerConnection() { //throw(IOException, bad_exception) {
 		
 		//open Socket
 		int serverSocket = socket(AF_UNIX, SOCK_STREAM, 0);
@@ -125,7 +125,7 @@ namespace IO {
 	/**
 	 *
 	 */
-	ServerConnection* UnixClientCommunicator::getServerConnection () throw(IOException, bad_exception) {
+	ServerConnection* UnixClientCommunicator::getServerConnection () { //throw(IOException, bad_exception) {
 		if( !_serverConnectionInv )
 			obtainServerConnection();
 			

@@ -41,6 +41,7 @@
 #include <sstream>
 #include <errno.h>
 #include <string.h>
+#include <unistd.h>
 
 /**
  * Namespace
@@ -58,7 +59,7 @@ namespace IO {
 	/**
 	 * Constructor
 	 */
-	UnixInStreambuf::UnixInStreambuf(int fd) throw(IOException, bad_exception)
+	UnixInStreambuf::UnixInStreambuf(int fd) //throw(IOException, bad_exception)
 	: _fd(fd),_bufferSize(-1) {
 
 		//try to get the size of readbuffer from configfile
@@ -99,7 +100,7 @@ namespace IO {
 	/**
 	 * fill buffer by reading from filedescriptor
 	 */
-	int UnixInStreambuf::underflow () throw (IOException, bad_exception) {
+	int UnixInStreambuf::underflow () { //throw (IOException, bad_exception) {
 		
 		//proof, whether the actual position is at end of buffer
 		if( gptr() < egptr() )
@@ -107,6 +108,7 @@ namespace IO {
 
 		//reading data
 		int num = read (_fd, _buffer, _bufferSize);
+		// int num = fread (_buffer, _bufferSize, _bufferSize, <FILE>(_fd));
 		if( num < 0 ) {
 		
 				string error(strerror(errno));

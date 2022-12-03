@@ -36,13 +36,13 @@
 
 namespace Brotfrucht {
 
-	BFClientShootTwiceState::BFClientShootTwiceState(ClientCoordinator* i,BFClientSpecificRepository* bfcsp,const GameOptionsRepository* go) throw (StrategyException,bad_exception):BFClientBasicState(i,bfcsp,go),_bfcsp(bfcsp) {}
+	BFClientShootTwiceState::BFClientShootTwiceState(ClientCoordinator* i,BFClientSpecificRepository* bfcsp,const GameOptionsRepository* go) /*throw (StrategyException,bad_exception)*/:BFClientBasicState(i,bfcsp,go),_bfcsp(bfcsp) {}
 	
 	/**
 	* This method is called when the RTB message "RobotsLeft [num]" occurs. This message is sent at the beginning of the game and after a robot has been killed.
 	* @param num The number of remaining robots
 	*/
-	void BFClientShootTwiceState::receiveRTBMessageRobotsLeft(int num) throw (StrategyException, bad_exception) {
+	void BFClientShootTwiceState::receiveRTBMessageRobotsLeft(int num) { //throw (StrategyException, bad_exception) {
 		BFClientBasicState::receiveRTBMessageRobotsLeft(num);
 		_bfcsp->getLogger()->logMessage(1,"Another robot died, reducing shoot frequency to the normal level...");
 		_bfcsp->setShootingInterval(_bfcsp->getShootingInterval()*2);

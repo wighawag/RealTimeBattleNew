@@ -54,7 +54,7 @@ namespace IO {
 		* Constructors
 		* @param fd unix-filedescriptor
 		*/
-		UnixInStream (int fd) throw(IOException, bad_exception);
+		UnixInStream (int fd); //throw(IOException, bad_exception);
 		
 		
 		/*
@@ -64,7 +64,7 @@ namespace IO {
 		* reads from buffer and extract a line
 		* @return string which contains the line
 		*/ 
-		string getline(void) throw(IOException, bad_exception);
+		string getline(void); //throw(IOException, bad_exception);
 		
 		
 	/*

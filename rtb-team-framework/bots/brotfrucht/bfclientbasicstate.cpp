@@ -39,14 +39,14 @@
 
 
 namespace Brotfrucht {
-	BFClientBasicState::BFClientBasicState(ClientCoordinator* i,BFClientSpecificRepository* bfcsp,const GameOptionsRepository* go) throw (StrategyException,bad_exception):ClientState(i),_bfcsp(bfcsp),_go(go) {}
+	BFClientBasicState::BFClientBasicState(ClientCoordinator* i,BFClientSpecificRepository* bfcsp,const GameOptionsRepository* go) /*throw (StrategyException,bad_exception)*/:ClientState(i),_bfcsp(bfcsp),_go(go) {}
 	
 	BFClientBasicState::~BFClientBasicState () throw() {}
 	/**
 	* Processes the server tips
 	* @param tip The server tip in string shape
 	*/
-	void BFClientBasicState::reactOnServerTip (const string& tip) throw (StrategyException,bad_exception) {
+	void BFClientBasicState::reactOnServerTip (const string& tip) { //throw (StrategyException,bad_exception) {
 		if (tip=="STARTROTATION")
 			sendRTBMessageRotate(6,_go->ROBOT_CANNON_MAX_ROTATE);
 		else if (tip=="STOPROTATION")
@@ -58,11 +58,11 @@ namespace Brotfrucht {
 	/**
 	* This method is called when all rtb messages in this round were received. After this method, the first server tips will arrive. 
 	*/
-	void BFClientBasicState::roundFinished () throw (StrategyException,bad_exception) {}
+	void BFClientBasicState::roundFinished () {} //throw (StrategyException,bad_exception) {}
 	/**
 	* This method is called when all server tips in this round were received. After this method, the state is to send its last messages. 
 	*/
-	void BFClientBasicState::sendRTBMessages () throw (StrategyException,bad_exception) {
+	void BFClientBasicState::sendRTBMessages () { //throw (StrategyException,bad_exception) {
 		if (_bfcsp->getTimePassed()>_bfcsp->getShootingInterval()) {
 			sendRTBMessageShoot(_go->SHOT_MAX_ENERGY/3);
 			_bfcsp->startTimer();
@@ -73,7 +73,7 @@ namespace Brotfrucht {
 	/**
 	* This method is called by ClientCoordinatorRevokes::resetGame()
 	*/
-	void BFClientBasicState::reset () throw (bad_exception, StrategyException) {}
+	void BFClientBasicState::reset () {} //throw (bad_exception, StrategyException) {}
 
 	/**
 	* This method is called when the RTB message "Radar [dist] [type] [angle]" occurs. This message occurs each turn and gives information about the closest object in the direction the radar points to.
@@ -81,7 +81,7 @@ namespace Brotfrucht {
 	* @param type The type of the observed object
 	* @param angle The angle the observed object is seen at in rad, relative to the robot front
 	*/
-	void BFClientBasicState::receiveRTBMessageRadar(double dist,object_type type,double angle) throw (StrategyException, bad_exception) {}
+	void BFClientBasicState::receiveRTBMessageRadar(double dist,object_type type,double angle) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "Info [time] [speed] [cannonAngle]" occurs. This message is sent each turn and gives information about the robot itself.
@@ -89,7 +89,7 @@ namespace Brotfrucht {
 	* @param speed The velocity of the robot
 	* @param cannonAngle The angle the cannon points to
 	*/
-	void BFClientBasicState::receiveRTBMessageInfo(double time,double speed,double cannonAngle) throw (StrategyException, bad_exception) {}
+	void BFClientBasicState::receiveRTBMessageInfo(double time,double speed,double cannonAngle) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "Coordinates [x] [y] [angle]" occurs. Generally, this message is sent each turn. If the game option SEND_ROBOT_COORDINATES is sent to 2, absolute coordinates are sent. If this value is 1, the coordinates are given relative to the starting point. On the case 0, this message is not sent.
@@ -97,14 +97,14 @@ namespace Brotfrucht {
 	* @param y ... are the sent coordinates
 	* @param angle is the angle the robot front points to
 	*/
-	void BFClientBasicState::receiveRTBMessageCoordinates(double x,double y,double angle) throw (StrategyException, bad_exception) {}
+	void BFClientBasicState::receiveRTBMessageCoordinates(double x,double y,double angle) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "RobotInfo [energy] [isTeamMate]" occurs. This message is always sent after another robot has been detected by the radar. It gives some information about this might-be foe.
 	* @param energy The unexact energy level of the detected robot
 	* @param isTeamMate Defines whether the robot is a team mate (team mode is not yet implemented in RTB)
 	*/
-	void BFClientBasicState::receiveRTBMessageRobotInfo(double energy,bool isTeamMate) throw (StrategyException, bad_exception) {
+	void BFClientBasicState::receiveRTBMessageRobotInfo(double energy,bool isTeamMate) { //throw (StrategyException, bad_exception) {
 		_bfcsp->getLogger()->logMessage(100,string("See a robot, friendly: ")+(isTeamMate?string("yes"):string("no")));
 	}
 
@@ -112,27 +112,27 @@ namespace Brotfrucht {
 	* This method is called when the RTB message "RotationReached [what]" occurs. In our case, this message is sent, when a rotation initiated by "RotateTo" or "RotateAmount" has finished or the sweeping has changed direction.
 	* param what What this message bears on; 1 = Robot, 2 = Cannon, 4 = Radar
 	*/
-	void BFClientBasicState::receiveRTBMessageRotationReached(int what) throw (StrategyException, bad_exception) {}	// >> Maybe we should introduce another
+	void BFClientBasicState::receiveRTBMessageRotationReached(int what) {} //throw (StrategyException, bad_exception) {}	// >> Maybe we should introduce another
 									//    enum for this (TODO)
 
 	/**
 	* This method is called when the RTB message "Energy [energy]" occurs. This message is sent at the end of each turn and specifies the health state of the robot.
 	* @param energy The unexact energy level
 	*/
-	void BFClientBasicState::receiveRTBMessageEnergy(double energy) throw (StrategyException, bad_exception) {}
+	void BFClientBasicState::receiveRTBMessageEnergy(double energy) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "RobotsLeft [num]" occurs. This message is sent at the beginning of the game and after a robot has been killed.
 	* @param num The number of remaining robots
 	*/
-	void BFClientBasicState::receiveRTBMessageRobotsLeft(int num) throw (StrategyException, bad_exception) {}
+	void BFClientBasicState::receiveRTBMessageRobotsLeft(int num) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "Collision [type] [angle]" occurs. This message is sent whan the robot has been hit by or hits another object,
 	* @param type The type of the hit object
 	* @param angle The angle the collision happened at in rad, relative to the robot front
 	*/
-	void BFClientBasicState::receiveRTBMessageCollision(object_type type,double angle) throw (StrategyException, bad_exception) {
+	void BFClientBasicState::receiveRTBMessageCollision(object_type type,double angle) { //throw (StrategyException, bad_exception) {
 		_bfcsp->oneMoreCollision();
 		_numberconf << (_bfcsp->getCollisionCount());
 		_bfcsp->getLogger()->logMessage(3,string("This was collision number :")+_numberconf.str());
@@ -145,10 +145,10 @@ namespace Brotfrucht {
 	* @param warning The type of the warning
 	* @param message The text of the warning
 	*/
-	void BFClientBasicState::receiveRTBMessageWarning(warning_type warning,const string& message) throw (StrategyException, bad_exception) {}
+	void BFClientBasicState::receiveRTBMessageWarning(warning_type warning,const string& message) {} //throw (StrategyException, bad_exception) {}
 
 	/**
 	* This method is called when the RTB message "Dead" occurs. This message is sent when the robot pegs out.
 	*/
-	void BFClientBasicState::receiveRTBMessageDead() throw (StrategyException, bad_exception) {}
+	void BFClientBasicState::receiveRTBMessageDead() {} //throw (StrategyException, bad_exception) {}
 }

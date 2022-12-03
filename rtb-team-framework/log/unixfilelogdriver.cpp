@@ -72,7 +72,7 @@ namespace Log {
 	* Constructor for the first UnixFileLogDriver object
 	* Constructor will register the object by the MRC with the name UnixFileLogDriver
 	*/
-	UnixFileLogDriver::UnixFileLogDriver() throw (bad_exception):_isCloned(false),_isInitialized(false),_fd(-1),_rootFDMap(new map <long long int, int>()),_clonedFDMap(NULL) {
+	UnixFileLogDriver::UnixFileLogDriver() /*throw (bad_exception)*/:_isCloned(false),_isInitialized(false),_fd(-1),_rootFDMap(new map <long long int, int>()),_clonedFDMap(NULL) {
 		_clonedFDMap=_rootFDMap.get();
 		
 		// register this initial object by the MRC
@@ -87,7 +87,7 @@ namespace Log {
 	/**
 	* Method that is called by the MRC to duplicate the whole object
 	*/
-	auto_ptr <LogDriver>  UnixFileLogDriver::clone () const throw (bad_exception)
+	auto_ptr <LogDriver>  UnixFileLogDriver::clone () const //throw (bad_exception)
 	{
 		return auto_ptr<LogDriver>(new UnixFileLogDriver(_isInitialized, _fd, _clonedFDMap));
 	}
@@ -98,7 +98,7 @@ namespace Log {
 	* @param message Message that will be logged in the file
 	* If logger object was not initialized properly, this method will only throw an exception
 	*/
-	void  UnixFileLogDriver::logMessage (const string& message) throw (IOException, bad_exception) 
+	void  UnixFileLogDriver::logMessage (const string& message) //throw (IOException, bad_exception) 
 	{
 		if (!_isInitialized)
 			throw IOException("UnixFileLogDriver was not configured properly so logging is impossible!");
@@ -117,7 +117,7 @@ namespace Log {
 	* the UnixFileLogDriver object will not work. If the file was already opened by another component of the same process,
 	* logging will work properly.
 	*/
-	void  UnixFileLogDriver::setLogDriverParameters (const string& logDriverParameters)  throw (IOException, bad_exception) 
+	void  UnixFileLogDriver::setLogDriverParameters (const string& logDriverParameters)  //throw (IOException, bad_exception) 
 	{
 		_isInitialized=false;
 		// first find out, if parameter is correct

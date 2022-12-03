@@ -43,7 +43,7 @@ namespace IO {
 	/**
 	 * Constructors
 	 */
-	UnixOutStream::UnixOutStream (int fd) throw(bad_exception)
+	UnixOutStream::UnixOutStream (int fd) //throw(bad_exception)
 	: ostream(0), _unixOutStreambuf(fd), _fd(fd) {
 		rdbuf(&_unixOutStreambuf);
 		
@@ -53,7 +53,7 @@ namespace IO {
 	/**
 	 * Methods
 	 */
-	void UnixOutStream::sendline(const string& line) throw(IOException, bad_exception) {
+	void UnixOutStream::sendline(const string& line) { //throw(IOException, bad_exception) {
 		if( line.size() > 0 ) {
 			try {
 				_sendString.clear();

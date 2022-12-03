@@ -44,6 +44,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/un.h>
+#include <unistd.h>
 
 /**
  * Namespace
@@ -58,7 +59,7 @@ namespace IO {
 	/**
 	 * Constructors
 	 */
-	UnixServerCommunicator::UnixServerCommunicator() throw(IOException, ServerIsPresentException, bad_exception) 
+	UnixServerCommunicator::UnixServerCommunicator() //throw(IOException, ServerIsPresentException, bad_exception) 
 	: _mrc(MasterResourceControl::Instance()) {
 
 		//obtain Logger
@@ -128,7 +129,7 @@ namespace IO {
 	/**
 	 * Methods
 	 */
-	auto_ptr <ClientConnection> UnixServerCommunicator::createRemoteClientConnection () throw (ServerIsPresentException, IOException, bad_exception) {
+	auto_ptr <ClientConnection> UnixServerCommunicator::createRemoteClientConnection () { //throw (ServerIsPresentException, IOException, bad_exception) {
 		
 		//wait until RTB-Server is sending data (=> Exception) or a client wants to connect 
 		_logger->logMessage(2, "Waiting for remoteclients.");

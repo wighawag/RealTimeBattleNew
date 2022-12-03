@@ -49,7 +49,7 @@ namespace RTBGlobal {
 	/**
 	* Constructor
 	*/
-	MasterResourceControl::MasterResourceControl () throw (bad_exception): _configMap(0), _runtimeMap(), _ioFactory(0), _strategyFactoryMap(), _logDriverPrototypeMap() {
+	MasterResourceControl::MasterResourceControl () /*throw (bad_exception)*/: _configMap(0), _runtimeMap(), _ioFactory(0), _strategyFactoryMap(), _logDriverPrototypeMap() {
 		// does nothing at the moment
 	}
 	/**
@@ -73,7 +73,7 @@ namespace RTBGlobal {
 	/**
 	 * Obtains the one and only MasterResourceControl object (singleton)
 	 */
-	MasterResourceControl* MasterResourceControl::Instance () throw (bad_exception){
+	MasterResourceControl* MasterResourceControl::Instance () { //throw (bad_exception){
 		MasterResourceControl* mrc(MasterResourceControl::_instance.get());
 		if (mrc==0) {
 			MasterResourceControl::_instance.reset(mrc=new MasterResourceControl());
@@ -90,27 +90,27 @@ namespace RTBGlobal {
 	/**
 	* 
 	*/
-	void MasterResourceControl::registrateIOFactory (auto_ptr <IOFactory> ioFactory)  throw (bad_exception){
+	void MasterResourceControl::registrateIOFactory (auto_ptr <IOFactory> ioFactory)  { //throw (bad_exception){
 		_ioFactory=ioFactory;
 	}
 	/**
 	* 
 	*/
-	void MasterResourceControl::registrateStrategyFactory (const string& strategyName, auto_ptr<StrategyFactory> strategyFactory)  throw (bad_exception){
+	void MasterResourceControl::registrateStrategyFactory (const string& strategyName, auto_ptr<StrategyFactory> strategyFactory)  { //throw (bad_exception){
 		// warning: if two strategy factories will register under the same name, we will have a memory leak
 		_strategyFactoryMap[strategyName]=strategyFactory.release();
 	}
 	/**
 	* 
 	*/
-	void MasterResourceControl::registrateLogDriverPrototype (const string& logDriverName, auto_ptr <LogDriver> logDriverPrototype) throw (bad_exception){
+	void MasterResourceControl::registrateLogDriverPrototype (const string& logDriverName, auto_ptr <LogDriver> logDriverPrototype) { //throw (bad_exception){
 		// warning: if two logdriverPrototypes will register under the same name, we will have a memory leak
 		_logDriverPrototypeMap[logDriverName]=logDriverPrototype.release();		
 	}
 	/**
 	* 
 	*/
-	auto_ptr <GameController> MasterResourceControl::getGameController () const throw (ResourceNotFoundException, bad_exception)  {
+	auto_ptr <GameController> MasterResourceControl::getGameController () const { //throw (ResourceNotFoundException, bad_exception)  {
 		try {
 			auto_ptr<GameController> gameController(0);
 			const IOFactory* iof(getIOFactory());
@@ -134,7 +134,7 @@ namespace RTBGlobal {
 	/**
 	* 
 	*/
-	const IOFactory* MasterResourceControl::getIOFactory () const throw (ResourceNotFoundException, bad_exception) {
+	const IOFactory* MasterResourceControl::getIOFactory () const { //throw (ResourceNotFoundException, bad_exception) {
 		if (_ioFactory.get()==0)
 			throw ResourceNotFoundException("IOFactory was not present at this stage!");
 		return _ioFactory.get();	
@@ -142,7 +142,7 @@ namespace RTBGlobal {
 	/**
 	* Returns a strategy factory that will be able to create the needed state objects.
 	*/
-	const StrategyFactory * MasterResourceControl::getStrategyFactory (const string& strategyName) const throw (ResourceNotFoundException, bad_exception)  {
+	const StrategyFactory * MasterResourceControl::getStrategyFactory (const string& strategyName) const { //throw (ResourceNotFoundException, bad_exception)  {
 		pmap<string, StrategyFactory>::const_iterator i(_strategyFactoryMap.find(strategyName));
 		if (i!=_strategyFactoryMap.end())
 			return i->second;
@@ -151,7 +151,7 @@ namespace RTBGlobal {
 	/**
 	* 
 	*/
-	auto_ptr <Logger> MasterResourceControl::createLogger (const string& section) const throw (ResourceNotFoundException, bad_exception) {
+	auto_ptr <Logger> MasterResourceControl::createLogger (const string& section) const { //throw (ResourceNotFoundException, bad_exception) {
 		// this method cannot be implemented until we do not know how we have specified the configuration keys
 		try {
 			// first find out the name of the logDriverPrototype to use for the logger
@@ -181,13 +181,13 @@ namespace RTBGlobal {
 	/**
 	* 
 	*/
-	void MasterResourceControl::setConfigurationData (const map<string, map<string, string> >& configurationData)  throw (bad_exception){
+	void MasterResourceControl::setConfigurationData (const map<string, map<string, string> >& configurationData)  { //throw (bad_exception){
 		_configMap.reset (new map<string, map<string, string> >(configurationData));
 	}
 	/**
 	* 
 	*/
-	const string& MasterResourceControl::getConfigurationProperty (const string& section, const string& key) const throw (ConfigNotLoadedException, KeyNotFoundException, bad_exception) {
+	const string& MasterResourceControl::getConfigurationProperty (const string& section, const string& key) const { //throw (ConfigNotLoadedException, KeyNotFoundException, bad_exception) {
 		map<string, map<string,string> >* configMap(_configMap.get());
 		if (configMap==0)	
 			throw ConfigNotLoadedException();
@@ -203,13 +203,13 @@ namespace RTBGlobal {
 	/**
 	* 
 	*/
-	void MasterResourceControl::setRuntimeProperty (const string& section, const string& key, const string& value)  throw (bad_exception) {
+	void MasterResourceControl::setRuntimeProperty (const string& section, const string& key, const string& value)  { //throw (bad_exception) {
 		(_runtimeMap[section])[key]=value;
 	}
 	/**
 	* Returns a runtime property value associated with a key in a section.
 	*/
-	const string& MasterResourceControl::getRuntimeProperty (const string& section, const string& key) const throw (KeyNotFoundException, bad_exception) {
+	const string& MasterResourceControl::getRuntimeProperty (const string& section, const string& key) const { //throw (KeyNotFoundException, bad_exception) {
 		map<string, map<string, string> >::const_iterator i(_runtimeMap.find(section));
 		if (i!=_runtimeMap.end()) {
 			map<string,string>::const_iterator j((i->second).find(key));

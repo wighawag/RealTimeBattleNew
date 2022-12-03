@@ -61,21 +61,21 @@ namespace Brotfrucht {
 			/**
 			* Method to obtain the one and only object of this class
 			*/
-			static BFSharedServerSpecificRepository* Instance() throw (bad_exception);
+			static BFSharedServerSpecificRepository* Instance(); //throw (bad_exception);
 			/**
 			* Method to reset the repositories (clears all names out of the vector
 			*/
-			void reset() throw (bad_exception);
+			void reset(); //throw (bad_exception);
 		
 			/**
 			* Appends the own robot name to the vector
 			*/
-			void appendRobotName(const string& robotName) throw (bad_exception);
+			void appendRobotName(const string& robotName); //throw (bad_exception);
 		
 			/**
 			* Gets the name of the roboter with the given index
 			*/
-			const string& getRobotName (int i) const throw (bad_exception, out_of_range);
+			const string& getRobotName (int i) const; //throw (bad_exception, out_of_range);
 		
 			/**
 			* Get the number of (friendly) robots
@@ -111,7 +111,7 @@ namespace Brotfrucht {
 			  /**
 			   * Constructor
 			   */
-			  BFSharedServerSpecificRepository()throw (StrategyException, bad_exception);
+			  BFSharedServerSpecificRepository(); //throw (StrategyException, bad_exception);
 			  
 	};
 }

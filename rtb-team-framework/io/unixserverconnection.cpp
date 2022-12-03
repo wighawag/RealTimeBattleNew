@@ -41,6 +41,8 @@
 //IPC
 #include <fcntl.h>
 
+#include <unistd.h>
+
 /**
  * Namespace
  */
@@ -58,7 +60,7 @@ namespace IO {
 	/**
 	 * 
 	 */
-	UnixServerConnection* UnixServerConnection::instance (int serverSocket) throw (IOException, bad_exception) {
+	UnixServerConnection* UnixServerConnection::instance (int serverSocket) { //throw (IOException, bad_exception) {
 		UnixServerConnection* serverConnection(UnixServerConnection::_instance.get());
 		if( serverConnection == 0 ) {
 			UnixServerConnection::_instance.reset(serverConnection = new UnixServerConnection(serverSocket));
@@ -74,7 +76,7 @@ namespace IO {
 	/**
 	 * 
 	 */
-	UnixServerConnection::UnixServerConnection (int serverSocket) throw(IOException, bad_exception)
+	UnixServerConnection::UnixServerConnection (int serverSocket) //throw(IOException, bad_exception)
 	: ServerConnection(), _inStream(serverSocket), _outStream(serverSocket) {
 	   	_serverSocket = serverSocket;
 
@@ -106,19 +108,19 @@ namespace IO {
 	 *
 	 * @param line Message that will be send over the connection (does not append a trailing newline)
 	 */
-	void UnixServerConnection::sendLine (const string& line) throw(StrategyException, IOException, bad_exception) {
+	void UnixServerConnection::sendLine (const string& line) { //throw(StrategyException, IOException, bad_exception) {
 		_outStream.sendline(line);
 	}
 	/**
 	 * @return string that contains a line out of the connection (not terminated with newline)
 	 */
-	string UnixServerConnection::getLine () throw(IOException, bad_exception) {
+	string UnixServerConnection::getLine () { //throw(IOException, bad_exception) {
 		return _inStream.getline();
 	}
 	/**
 	 * @return name of the associated target
 	 */
-	string UnixServerConnection::getTargetName () throw(IOException, bad_exception) {
+	string UnixServerConnection::getTargetName () { //throw(IOException, bad_exception) {
 		return _serverName;
 	}
 }

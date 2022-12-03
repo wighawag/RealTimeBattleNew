@@ -58,7 +58,7 @@ namespace IO {
 		* Constructor
 		* @param fd unix-filedescriptor
 		*/
-		UnixInStreambuf(int fd) throw(IOException, bad_exception);
+		UnixInStreambuf(int fd); //throw(IOException, bad_exception);
 		
 	
 		/**
@@ -93,7 +93,7 @@ namespace IO {
 		/**
 		* fill buffer by reading from filedescriptor
 		*/
-		int underflow () throw(IOException, bad_exception);
+		int underflow (); //throw(IOException, bad_exception);
 	
 	};
 }

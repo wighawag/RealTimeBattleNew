@@ -42,13 +42,13 @@ namespace Brotfrucht {
 	*/
 	class BFClientShootTwiceState: public BFClientBasicState {
 	public:
-		BFClientShootTwiceState(ClientCoordinator* i,BFClientSpecificRepository* bfcsp,const GameOptionsRepository* go) throw (StrategyException,bad_exception);
+		BFClientShootTwiceState(ClientCoordinator* i,BFClientSpecificRepository* bfcsp,const GameOptionsRepository* go); //throw (StrategyException,bad_exception);
 				
 		/**
 		* This method is called when the RTB message "RobotsLeft [num]" occurs. This message is sent at the beginning of the game and after a robot has been killed.
 		* @param num The number of remaining robots
 		*/
-		void receiveRTBMessageRobotsLeft(int num) throw (StrategyException, bad_exception);
+		void receiveRTBMessageRobotsLeft(int num); //throw (StrategyException, bad_exception);
 	private:
 		BFClientSpecificRepository* _bfcsp;
 	};

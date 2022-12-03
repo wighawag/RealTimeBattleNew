@@ -58,14 +58,14 @@ namespace Parser {
 	* Public stuff
 	*/
 	public:
-		ConfigurationParser() throw (bad_exception);
-		void addFile(const string& filename) throw(ParserException, bad_exception);
+		ConfigurationParser(); //throw (bad_exception);
+		void addFile(const string& filename); //throw(ParserException, bad_exception);
 		const map<string, map<string, string> >& getConfigurationData() const throw();
 	/*
 	* Private stuff
 	*/
 	private:
-		string erase_wspace(const string& s) const throw (bad_exception);
+		string erase_wspace(const string& s) const; //throw (bad_exception);
 	
 		/**
 		* true, if the given character is allowed inside a section, a key  or a value.

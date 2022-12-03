@@ -48,7 +48,7 @@ using std::string;
 
 ServerCoordinator::~ServerCoordinator ()throw() {}
 
-ServerCoordinator::ServerCoordinator (	ClientConnection* clientConnection, const GameOptionsRepository* gameOptionsRepository ) throw (ConfigNotLoadedException, KeyNotFoundException,bad_exception, StrategyException,ResourceNotFoundException) :_internalServerSpecificRepository(0),_serverStates(0),_logger(0),_clientConnection(clientConnection) {
+ServerCoordinator::ServerCoordinator (	ClientConnection* clientConnection, const GameOptionsRepository* gameOptionsRepository ) { //throw (ConfigNotLoadedException, KeyNotFoundException,bad_exception, StrategyException,ResourceNotFoundException) :_internalServerSpecificRepository(0),_serverStates(0),_logger(0),_clientConnection(clientConnection) {
 	MasterResourceControl *mrc=MasterResourceControl::Instance();
 	const StrategyFactory *fac=mrc->getStrategyFactory(mrc->getConfigurationProperty("Strategy","StrategyName"));
 	auto_ptr<ServerStateData> ssd(fac->createServerStateData(this,gameOptionsRepository));
@@ -71,7 +71,7 @@ State* ServerCoordinator::getCurrentState () throw () {
 	return currentServerState;
 }
 
-void ServerCoordinator::resetGame () throw (StrategyException,bad_exception) {
+void ServerCoordinator::resetGame () { //throw (StrategyException,bad_exception) {
 // this line is necessary
 	_tipBuffer.clear();
 	_tipBuffer.str(_emptyString);
@@ -88,14 +88,14 @@ void ServerCoordinator::resetGame () throw (StrategyException,bad_exception) {
 	_logger->logMessage(4,_logMessage1);
 }
 
-void ServerCoordinator::processReceivedRTBMessages () throw (StrategyException,bad_exception) {
+void ServerCoordinator::processReceivedRTBMessages () { //throw (StrategyException,bad_exception) {
 // This method calls sendServerTips on the current server state object.
 	_logger->logMessage(1,_logMessage2);
 	currentServerState->sendServerTips();
 	endServerTipSequence();
 }
 
-void ServerCoordinator::setCurrentServerState (unsigned char serverStateIndex) throw (bad_exception,StrategyException) {
+void ServerCoordinator::setCurrentServerState (unsigned char serverStateIndex) { //throw (bad_exception,StrategyException) {
 	try {
 		currentServerState=_serverStates->at(serverStateIndex);
 	}
@@ -109,7 +109,7 @@ void ServerCoordinator::setCurrentServerState (unsigned char serverStateIndex) t
 	_logger->logMessage(3,_logMessage3+currentServerStateName);
 }
 
-void ServerCoordinator::endServerTipSequence () throw (bad_exception) {
+void ServerCoordinator::endServerTipSequence () { //throw (bad_exception) {
 	_tipBuffer << _finishingString;
 	_clientConnection->sendLine(_tipBuffer.str());
 	// this line is necessary
@@ -119,7 +119,7 @@ void ServerCoordinator::endServerTipSequence () throw (bad_exception) {
 }
 
 
-string ServerCoordinator::getAssociatedRobotName () throw (bad_exception)
+string ServerCoordinator::getAssociatedRobotName () //throw (bad_exception)
 {
 	return _clientConnection->getTargetName();
 }

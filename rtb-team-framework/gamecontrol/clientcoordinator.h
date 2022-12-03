@@ -75,7 +75,7 @@ class ClientCoordinator : public CoordinatorLeaf {
 public:
 	friend class ClientState;
 	
-	ClientCoordinator (const GameOptionsRepository* gameOptionsRepository, RTBConnection* rtbConnection) throw (ConfigNotLoadedException, KeyNotFoundException,bad_exception,StrategyException, ResourceNotFoundException);
+	ClientCoordinator (const GameOptionsRepository* gameOptionsRepository, RTBConnection* rtbConnection); //throw(ConfigNotLoadedException, KeyNotFoundException,bad_exception,StrategyException, ResourceNotFoundException);
 	~ClientCoordinator () throw();
 
 	/**
@@ -83,22 +83,22 @@ public:
 	 * @param serverTip The server tip in string shape
 	 * @return "false", if the tip was the end of the server tip sequence, otherwise "true"
 	 */
-	bool reactOnServerTip(const string& serverTip) throw (StrategyException,bad_exception);
+	bool reactOnServerTip(const string& serverTip); //throw (StrategyException,bad_exception);
 	
 	
 	/**
 	 * Revokes reset on all state objects and sets the current state to the beginning state.
 	 */
-	void  resetGame () throw (StrategyException,bad_exception);
+	void  resetGame (); //throw (StrategyException,bad_exception);
 	
 	
 	/**
 	 * Calls roundFinished on the current client state object.
 	 */
-	void  processReceivedRTBMessages () throw (StrategyException,bad_exception);
+	void  processReceivedRTBMessages (); //throw (StrategyException,bad_exception);
 	
 	
-	string  getAssociatedRobotName () throw (bad_exception);
+	string  getAssociatedRobotName (); //throw (bad_exception);
 	
 	
 /*
@@ -117,7 +117,7 @@ private:
 	auto_ptr <Logger> _logger;
 
 	RTBConnection* _rtbConnection;
-	void  setCurrentClientState (unsigned char clientStateIndex) throw (StrategyException,bad_exception);
+	void  setCurrentClientState (unsigned char clientStateIndex); //throw (StrategyException,bad_exception);
 
 	/**
 	 * This method is used by the client state objects to send a concrete message to RTB already encoded in string representation.
@@ -128,7 +128,7 @@ private:
 	/**
 	 * This method flushes the buffer contents to RTB and empties the buffer afterwards
 	 */
-	void flushMessages() throw (bad_exception);
+	void flushMessages(); //throw (bad_exception);
 	/**
 	 * This string is used to reset _messageBuffer 
 	 */

@@ -37,7 +37,7 @@ namespace empty {
  			/**
 			* Method to reset the repositories (clears number of collisions)
 			*/
-			void  empty_ClientSpecificRepository::reset() throw(StrategyException, bad_exception) {}
+			void  empty_ClientSpecificRepository::reset() {} //throw(StrategyException, bad_exception) {}
 
 			/**
 			 * Destructor
@@ -47,5 +47,5 @@ namespace empty {
 			/**
 			 * Constructor
 			*/
-			empty_ClientSpecificRepository::empty_ClientSpecificRepository() throw(StrategyException, bad_exception) {}
+			empty_ClientSpecificRepository::empty_ClientSpecificRepository() {} //throw(StrategyException, bad_exception) {}
 }

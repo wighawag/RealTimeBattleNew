@@ -66,21 +66,21 @@ namespace Log {
 		/**
 		* Method that is called by the MRC to duplicate the whole object
 		*/
-		virtual auto_ptr <LogDriver>  clone () const  throw (bad_exception) = 0;
+		virtual auto_ptr <LogDriver>  clone () const = 0; //throw (bad_exception) = 0;
 		
 	
 		/**
 		* 
 		* @param message Message that will be logged
 		*/
-		virtual void  logMessage (const string& message) throw (bad_exception, IOException) = 0;
+		virtual void  logMessage (const string& message) = 0; //throw (bad_exception, IOException) = 0;
 		
 	
 		/**
 		* 
 		* @param logDriverParameters Every driver can specify its own configuration parameters that will be passed with this string after the cloning process has taken place.
 		*/
-		virtual void  setLogDriverParameters (const string& logDriverParameters) throw (bad_exception, IOException)= 0;
+		virtual void  setLogDriverParameters (const string& logDriverParameters) = 0; //throw (bad_exception, IOException)= 0;
 		
 	
 	};

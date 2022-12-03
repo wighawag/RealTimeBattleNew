@@ -56,7 +56,7 @@ namespace IO {
 		/**
 		* Constructors
 		*/
-		LocalClientConnection(RTBConnection* rtbConnection, ClientCoordinator* clientCoordinator) throw(bad_exception);
+		LocalClientConnection(RTBConnection* rtbConnection, ClientCoordinator* clientCoordinator); //throw(bad_exception);
 		
 		
 		/*
@@ -74,14 +74,14 @@ namespace IO {
 		/**
 		* Calls getLine from RTBConnection (read-access)
 		*/
-		string  getLine () throw(IOException, bad_exception);
+		string  getLine (); //throw(IOException, bad_exception);
 
 
 		/**
 		* Invokes reactOnServerTip instead of writing to IO-Connection (write-access)
 		* @param line contains data to send
 		*/
-		void  sendLine (const string& line) throw(StrategyException, IOException, bad_exception);
+		void  sendLine (const string& line); //throw(StrategyException, IOException, bad_exception);
 
 
 		/**
@@ -93,7 +93,7 @@ namespace IO {
 		/**
 		* @return TargetName from RTB-Connection
 		*/
-		string  getTargetName () throw(IOException, bad_exception);
+		string  getTargetName (); //throw(IOException, bad_exception);
 		
 	
 	/*

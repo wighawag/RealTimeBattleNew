@@ -65,7 +65,7 @@ namespace RTBGlobal {
 	/**
 	* 
 	*/
-	void RTBInit::ParseConfigFile (const string& configFileName) throw (ParserException, bad_exception) {
+	void RTBInit::ParseConfigFile (const string& configFileName) { //throw (ParserException, bad_exception) {
 		ConfigurationParser parser;
 		parser.addFile(configFileName);
 		MasterResourceControl::Instance()->setConfigurationData(parser.getConfigurationData());	
@@ -84,7 +84,7 @@ namespace RTBGlobal {
 	* 2. Section Main, Key ActualColor : actual color as hex string, if first sequence, this value will be set to RobotHomeColor in section Main of the configuration file
 	* 3. Section Main, Key ActualName: actual name of the roboter given by the server, if first sequence, this value will be set to RobotName in section Main of the configuration file
 	*/
-	void RTBInit::SendInitialMessages () throw (IOException, bad_exception) {
+	void RTBInit::SendInitialMessages () { //throw (IOException, bad_exception) {
 		try {
 			// first obtain a pointer to the IOFactory
 			MasterResourceControl* mrc(MasterResourceControl::Instance());
@@ -193,7 +193,7 @@ namespace RTBGlobal {
 	* Starts the game as a client or as the RTB MasterServer (automatically found out by the MRC)
 	* @return true, if no error occured in the whole sequence, false if something went wrong and we could not continue playing
 	*/
-	bool RTBInit::StartGame () throw (bad_exception, RTBException) {
+	bool RTBInit::StartGame () { //throw (bad_exception, RTBException) {
 		return MasterResourceControl::Instance()->getGameController()->start();
 	}
 }

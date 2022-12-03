@@ -47,7 +47,7 @@ namespace Log {
 	map<string, int> SyslogLogDriver::_options;
 	map<string, int> SyslogLogDriver::_priorities;
 
-	SyslogLogDriver::SyslogLogDriver() throw (bad_exception)
+	SyslogLogDriver::SyslogLogDriver() //throw (bad_exception)
 	{
 		init();
 
@@ -55,14 +55,14 @@ namespace Log {
 		// have not been set yet.
 	}
 
-	SyslogLogDriver::SyslogLogDriver(const string& logDriverParameters) throw
-		(IOException,bad_exception)
+	SyslogLogDriver::SyslogLogDriver(const string& logDriverParameters) //throw
+		//(IOException,bad_exception)
 	{
 		init();
 		setLogDriverParameters(logDriverParameters);
 	}
 
-	SyslogLogDriver::SyslogLogDriver(const string& syslogIdent, int syslogOption, int syslogPriority) throw (bad_exception)
+	SyslogLogDriver::SyslogLogDriver(const string& syslogIdent, int syslogOption, int syslogPriority) //throw (bad_exception)
 	{
 		init();
 		setLogDriverParameters(syslogIdent, syslogOption, syslogPriority);
@@ -82,8 +82,8 @@ namespace Log {
 		_instanceInitialized=true;
 	}
 
-	void SyslogLogDriver::setLogDriverParameters(const string& logDriverParameters) throw
-		(IOException,bad_exception)
+	void SyslogLogDriver::setLogDriverParameters(const string& logDriverParameters) //throw
+		//(IOException,bad_exception)
 	{
 	
 		string syslogIdent;
@@ -128,7 +128,7 @@ namespace Log {
 
 
 	// the common code of all constructors
-	void SyslogLogDriver::init() throw (bad_exception)
+	void SyslogLogDriver::init() //throw (bad_exception)
 	{
 		_instanceInitialized=false;
 
@@ -158,7 +158,7 @@ namespace Log {
 		++_instanceCount;
 	}
 
-	auto_ptr<LogDriver> SyslogLogDriver::clone() const throw (bad_exception)
+	auto_ptr<LogDriver> SyslogLogDriver::clone() const //throw (bad_exception)
 	{
 	
 		// the returned SyslogLogDriver instance should be initialized if this
@@ -179,8 +179,8 @@ namespace Log {
 		_logOpened=true;
 	}
 
-	void SyslogLogDriver::logMessage(const string& message) throw
-			(IOException, bad_exception)
+	void SyslogLogDriver::logMessage(const string& message) //throw
+			//(IOException, bad_exception)
 	{
 
 		if(!_instanceInitialized) {
@@ -204,8 +204,8 @@ namespace Log {
 		syslog(_syslogPriority, message.c_str());
 	}
 
-	map<string, string> SyslogLogDriver::parseParameterString(const string& parameters) throw	
-		(IOException, bad_exception)
+	map<string, string> SyslogLogDriver::parseParameterString(const string& parameters) //throw	
+		//(IOException, bad_exception)
 	{
 		// States:
 		// BEFOREKEY
@@ -275,8 +275,8 @@ namespace Log {
 		return parsed;
 	}
 
-	int SyslogLogDriver::parseOption(const string& option) throw
-		(IOException, bad_exception)
+	int SyslogLogDriver::parseOption(const string& option) //throw
+		//(IOException, bad_exception)
 	{
 		// States:
 		// BEFORECOMP
@@ -340,7 +340,7 @@ namespace Log {
 	}
 
 	// delete spaces at the beginnning and at the end
-	string SyslogLogDriver::trim(const string& s) throw (bad_exception)
+	string SyslogLogDriver::trim(const string& s) //throw (bad_exception)
 	{
 		string ret=s;
 		while(isspace(ret[0])) ret.erase(ret.begin());
@@ -349,8 +349,8 @@ namespace Log {
 		return ret;
 	}
 
-	int SyslogLogDriver::parsePriority(const string& priority) throw
-		(IOException, bad_exception)
+	int SyslogLogDriver::parsePriority(const string& priority) //throw
+		//(IOException, bad_exception)
 	{
 		string prio=trim(priority);
 

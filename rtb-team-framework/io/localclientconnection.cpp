@@ -41,7 +41,7 @@ namespace IO {
 	/**
 	* Constructors/Destructors
 	*/
-	LocalClientConnection::LocalClientConnection(RTBConnection* rtbConnection, ClientCoordinator* clientCoordinator) throw (bad_exception):_rtbConnection(rtbConnection),_clientCoordinator(clientCoordinator) {
+	LocalClientConnection::LocalClientConnection(RTBConnection* rtbConnection, ClientCoordinator* clientCoordinator) { //throw (bad_exception):_rtbConnection(rtbConnection),_clientCoordinator(clientCoordinator) {
 	}
 	/**
 	* Methods
@@ -55,13 +55,13 @@ namespace IO {
 	/**
 	*
 	*/
-	string LocalClientConnection::getLine ()  throw(IOException,bad_exception) {
+	string LocalClientConnection::getLine ()  { //throw(IOException,bad_exception) {
 			return _rtbConnection->getLine();
 	}
 	/**
 	*
 	*/
-	void LocalClientConnection::sendLine (const string& line)  throw(StrategyException, IOException, bad_exception) {
+	void LocalClientConnection::sendLine (const string& line)  { //throw(StrategyException, IOException, bad_exception) {
 		if( line.size() > 0 ) {
 			unsigned int datalen;
 			int lastNewline = 0;
@@ -100,7 +100,7 @@ namespace IO {
 	/**
 	*
 	*/
-	string LocalClientConnection::getTargetName () throw(IOException,bad_exception) {
+	string LocalClientConnection::getTargetName () { //throw(IOException,bad_exception) {
 			return _rtbConnection->getTargetName()+" (local one)";
 	}
 }

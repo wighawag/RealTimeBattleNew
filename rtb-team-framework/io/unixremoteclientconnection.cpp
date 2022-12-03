@@ -36,6 +36,7 @@
 #include <iostream>
 #include <sstream>
 #include <ios>
+#include <unistd.h>
 
 /**
  * Namespace
@@ -50,7 +51,7 @@ namespace IO {
 	/**
 	 * Constructors
 	 */
-	UnixRemoteClientConnection::UnixRemoteClientConnection (int clientSocket) throw(IOException, bad_exception)
+	UnixRemoteClientConnection::UnixRemoteClientConnection (int clientSocket) //throw(IOException, bad_exception)
 	: RemoteClientConnection(), _inStream(clientSocket), _outStream(clientSocket) {
 	
 		_clientSocket = clientSocket;
@@ -91,13 +92,13 @@ namespace IO {
 	 * 
 	 * @param line Message that will be send over the connection (does not append a trailing newline)
 	 */
-	void UnixRemoteClientConnection::sendLine (const string& line) throw(StrategyException, IOException, bad_exception) {
+	void UnixRemoteClientConnection::sendLine (const string& line) { //throw(StrategyException, IOException, bad_exception) {
 		_outStream.sendline(line);
 	}
 	/**
 	 * @return string that contains a line out of the connection (not terminated with newline)
 	 */
-	string UnixRemoteClientConnection::getLine () throw(IOException, bad_exception) {
+	string UnixRemoteClientConnection::getLine () { //throw(IOException, bad_exception) {
 		return _inStream.getline();
 	}
 	/**

@@ -58,7 +58,7 @@ namespace Log {
 		/**
 		* Constructor
 		*/
-		Logger(const string& section, int priority, auto_ptr <LogDriver> logDriver) throw(bad_exception);
+		Logger(const string& section, int priority, auto_ptr <LogDriver> logDriver); //throw(bad_exception);
 		
 		
 		/*
@@ -69,7 +69,7 @@ namespace Log {
 		* @param priority
 		* @param message
 		*/
-		virtual void  logMessage (int priority, const string& message) throw(bad_exception, IOException);
+		virtual void  logMessage (int priority, const string& message); //throw(bad_exception, IOException);
 
 
 		/**

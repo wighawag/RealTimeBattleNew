@@ -57,7 +57,7 @@ namespace Strategies {
 		/**
 		* Method to reset the repositories
 		*/
-		virtual void reset() throw(StrategyException, bad_exception)=0;
+		virtual void reset() = 0; //throw(StrategyException, bad_exception)=0;
 		
 		
 		/**

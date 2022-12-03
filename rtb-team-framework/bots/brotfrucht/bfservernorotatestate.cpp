@@ -38,13 +38,13 @@
 
 namespace Brotfrucht {
 
-	BFServerNoRotateState::BFServerNoRotateState(ServerCoordinator* c,BFInternalServerSpecificRepository* bfssp, BFSharedServerSpecificRepository* bfsharedssp) throw (StrategyException,bad_exception):BFServerBasicState(c,bfssp,bfsharedssp),_bfsharedssp(bfsharedssp) {
+	BFServerNoRotateState::BFServerNoRotateState(ServerCoordinator* c,BFInternalServerSpecificRepository* bfssp, BFSharedServerSpecificRepository* bfsharedssp) /*throw (StrategyException,bad_exception)*/:BFServerBasicState(c,bfssp,bfsharedssp),_bfsharedssp(bfsharedssp) {
 	}
 
 	/**
 	* This method is called by ServerCoordinatorRevokes::resetGame()
 	*/
-	void BFServerNoRotateState::reset () throw (bad_exception, StrategyException) {
+	void BFServerNoRotateState::reset () { //throw (bad_exception, StrategyException) {
 		BFServerBasicState::reset();
 		// this is possible because the repositories will be reset before the corresponding states
 		_bfsharedssp->appendRobotName(getRobotName());
@@ -55,7 +55,7 @@ namespace Brotfrucht {
 	* @param type The type of the hit object
 	* @param angle The angle the collision happened at in rad, relative to the robot front
 	*/
-	void BFServerNoRotateState::receiveRTBMessageCollision(object_type type,double angle) throw (StrategyException, bad_exception) {
+	void BFServerNoRotateState::receiveRTBMessageCollision(object_type type,double angle) { //throw (StrategyException, bad_exception) {
 		BFServerBasicState::receiveRTBMessageCollision(type,angle);
 		_bfsharedssp->getLogger()->logMessage(1,getRobotName()+" was hit (recognized by BFServerNoRotateState), start rotating ...");
 		sendServerTipString("STARTROTATION");

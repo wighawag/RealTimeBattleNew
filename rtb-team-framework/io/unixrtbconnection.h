@@ -65,26 +65,26 @@ namespace IO {
 		/**
 		* returns an instance (->singleton pattern)
 		*/
-		static UnixRTBConnection* instance() throw(bad_exception);
+		static UnixRTBConnection* instance(); //throw(bad_exception);
 		  
 		 
 		/**
 		 * 
 		 * @param line Message that will be send over the connection (does not append a trailing newline)
 		 */
-		void sendLine (const string& line) throw(StrategyException, IOException, bad_exception);
+		void sendLine (const string& line); //throw(StrategyException, IOException, bad_exception);
 		
 	
 		/**
 		* @return string that contains a line out of the connection (not terminated with newline)
 		*/
-		string getLine () throw(IOException, bad_exception);
+		string getLine (); //throw(IOException, bad_exception);
 		
 	
 		/**
 		* @return name of the associated target
 		*/
-		string getTargetName () throw(IOException, bad_exception);
+		string getTargetName (); //throw(IOException, bad_exception);
 		
 		
 	/*
@@ -110,7 +110,7 @@ namespace IO {
 		/**
 		* Private constructor (->singleton pattern)
 		*/
-		UnixRTBConnection() throw(bad_exception);
+		UnixRTBConnection(); //throw(bad_exception);
 	};
 }
 #endif //UNIXRTBCONNECTION_H

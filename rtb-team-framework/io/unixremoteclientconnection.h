@@ -54,7 +54,7 @@ namespace IO {
 		* Constructors
 		* @param clientSocket socket (unix-filedescriptor)
 		*/
-		UnixRemoteClientConnection (int clientSocket) throw(IOException, bad_exception);
+		UnixRemoteClientConnection (int clientSocket); //throw(IOException, bad_exception);
 	
 		
 		/**
@@ -66,13 +66,13 @@ namespace IO {
 		* 
 		* @param line Message that will be send over the connection (does not append a trailing newline)
 		*/
-		void sendLine (const string& line) throw(StrategyException, IOException, bad_exception);
+		void sendLine (const string& line); //throw(StrategyException, IOException, bad_exception);
 		
 	
 		/**
 		* @return string that contains a line out of the connection (not terminated with newline)
 		*/
-		string getLine () throw(IOException, bad_exception);
+		string getLine (); //throw(IOException, bad_exception);
 		
 	
 		/**

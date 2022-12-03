@@ -38,12 +38,12 @@ using std::string;
 
 CoordinatorComposite::~CoordinatorComposite () throw() {}
 
-void CoordinatorComposite::resetGame () throw (StrategyException,bad_exception){
+void CoordinatorComposite::resetGame () { //throw (StrategyException,bad_exception){
 	_clientCoordinator->resetGame();
 	_serverCoordinator->resetGame();
 }
 
-void CoordinatorComposite::processReceivedRTBMessages () throw (StrategyException,bad_exception) {
+void CoordinatorComposite::processReceivedRTBMessages () { //throw (StrategyException,bad_exception) {
 		_clientCoordinator->processReceivedRTBMessages();
 		_serverCoordinator->processReceivedRTBMessages();
 }
@@ -53,7 +53,7 @@ CoordinatorComposite::CoordinatorComposite (	ClientCoordinator* clientCoordinato
 					_clientCoordinator(clientCoordinator),
 					_serverCoordinator(serverCoordinator) {}
 
-string CoordinatorComposite::getAssociatedRobotName () throw (bad_exception)
+string CoordinatorComposite::getAssociatedRobotName () //throw (bad_exception)
 {
 	return _clientCoordinator->getAssociatedRobotName();
 }
@@ -64,7 +64,7 @@ string CoordinatorComposite::getAssociatedRobotName () throw (bad_exception)
 * @param type The type of the observed object
 * @param angle The angle the observed object is seen at in rad, relative to the robot front
 */
-void CoordinatorComposite::receiveRTBMessageRadar(double dist,object_type type,double angle) throw (StrategyException, bad_exception)
+void CoordinatorComposite::receiveRTBMessageRadar(double dist,object_type type,double angle) //throw (StrategyException, bad_exception)
 {
 	_clientCoordinator->receiveRTBMessageRadar(dist,type,angle);
 	_serverCoordinator->receiveRTBMessageRadar(dist,type,angle);
@@ -76,7 +76,7 @@ void CoordinatorComposite::receiveRTBMessageRadar(double dist,object_type type,d
 * @param speed The velocity of the robot
 * @param cannonAngle The angle the cannon points to
 */
-void CoordinatorComposite::receiveRTBMessageInfo(double time,double speed,double cannonAngle) throw (StrategyException, bad_exception)
+void CoordinatorComposite::receiveRTBMessageInfo(double time,double speed,double cannonAngle) //throw (StrategyException, bad_exception)
 {
 	_clientCoordinator->receiveRTBMessageInfo(time,speed,cannonAngle);
 	_serverCoordinator->receiveRTBMessageInfo(time,speed,cannonAngle);
@@ -88,7 +88,7 @@ void CoordinatorComposite::receiveRTBMessageInfo(double time,double speed,double
 * @param y ... are the sent coordinates
 * @param angle is the angle the robot front points to
 */
-void CoordinatorComposite::receiveRTBMessageCoordinates(double x,double y,double angle) throw (StrategyException, bad_exception)
+void CoordinatorComposite::receiveRTBMessageCoordinates(double x,double y,double angle) //throw (StrategyException, bad_exception)
 {
 	_clientCoordinator->receiveRTBMessageCoordinates(x,y,angle);
 	_serverCoordinator->receiveRTBMessageCoordinates(x,y,angle);
@@ -99,7 +99,7 @@ void CoordinatorComposite::receiveRTBMessageCoordinates(double x,double y,double
 * @param energy The unexact energy level of the detected robot
 * @param isTeamMate Defines whether the robot is a team mate (team mode is not yet implemented in RTB)
 */
-void CoordinatorComposite::receiveRTBMessageRobotInfo(double energy,bool isTeamMate) throw (StrategyException, bad_exception)
+void CoordinatorComposite::receiveRTBMessageRobotInfo(double energy,bool isTeamMate) //throw (StrategyException, bad_exception)
 {
 	_clientCoordinator->receiveRTBMessageRobotInfo(energy,isTeamMate);
 	_serverCoordinator->receiveRTBMessageRobotInfo(energy,isTeamMate);
@@ -109,7 +109,7 @@ void CoordinatorComposite::receiveRTBMessageRobotInfo(double energy,bool isTeamM
 * This method is called when the RTB message "RotationReached [what]" occurs. In our case, this message is sent, when a rotation initiated by "RotateTo" or "RotateAmount" has finished or the sweeping has changed direction.
 * param what What this message bears on; 1 = Robot, 2 = Cannon, 4 = Radar
 */
-void CoordinatorComposite::receiveRTBMessageRotationReached(int what) throw (StrategyException, bad_exception)	// >> Maybe we should introduce
+void CoordinatorComposite::receiveRTBMessageRotationReached(int what) //throw (StrategyException, bad_exception)	// >> Maybe we should introduce
 {
 	_clientCoordinator->receiveRTBMessageRotationReached(what);
 	_serverCoordinator->receiveRTBMessageRotationReached(what);
@@ -121,7 +121,7 @@ void CoordinatorComposite::receiveRTBMessageRotationReached(int what) throw (Str
 * This method is called when the RTB message "Energy [energy]" occurs. This message is sent at the end of each turn and specifies the health state of the robot.
 * @param energy The unexact energy level
 */
-void CoordinatorComposite::receiveRTBMessageEnergy(double energy) throw (StrategyException, bad_exception)
+void CoordinatorComposite::receiveRTBMessageEnergy(double energy) //throw (StrategyException, bad_exception)
 {
 	_clientCoordinator->receiveRTBMessageEnergy(energy);
 	_serverCoordinator->receiveRTBMessageEnergy(energy);
@@ -142,7 +142,7 @@ void CoordinatorComposite::receiveRTBMessageRobotsLeft(int num) throw ()
 * @param type The type of the hit object
 * @param angle The angle the collision happened at in rad, relative to the robot front
 */
-void CoordinatorComposite::receiveRTBMessageCollision(object_type type,double angle) throw (StrategyException, bad_exception)
+void CoordinatorComposite::receiveRTBMessageCollision(object_type type,double angle) //throw (StrategyException, bad_exception)
 {
 	_clientCoordinator->receiveRTBMessageCollision(type,angle);
 	_serverCoordinator->receiveRTBMessageCollision(type,angle);
@@ -153,7 +153,7 @@ void CoordinatorComposite::receiveRTBMessageCollision(object_type type,double an
 * @param warning The type of the warning
 * @param message The text of the warning
 */
-void CoordinatorComposite::receiveRTBMessageWarning(warning_type warning,const string& message) throw (StrategyException, bad_exception)
+void CoordinatorComposite::receiveRTBMessageWarning(warning_type warning,const string& message) //throw (StrategyException, bad_exception)
 {
 	_clientCoordinator->receiveRTBMessageWarning(warning,message);
 	_serverCoordinator->receiveRTBMessageWarning(warning,message);
@@ -162,7 +162,7 @@ void CoordinatorComposite::receiveRTBMessageWarning(warning_type warning,const s
 /**
 * This method is called when the RTB message "Dead" occurs. This message is sent when the robot pegs out.
 */
-void CoordinatorComposite::receiveRTBMessageDead() throw (StrategyException, bad_exception)
+void CoordinatorComposite::receiveRTBMessageDead() //throw (StrategyException, bad_exception)
 {
 	_clientCoordinator->receiveRTBMessageDead();
 	_serverCoordinator->receiveRTBMessageDead();

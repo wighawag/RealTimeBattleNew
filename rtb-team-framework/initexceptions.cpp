@@ -60,7 +60,7 @@ namespace { // anonymous namespace, all things in here are solely for exception 
 	};
 	
 	// global unexpected exception handler
-	void rtb_unexpected_exception_handler() throw (bad_exception) 
+	void rtb_unexpected_exception_handler() //throw (bad_exception) 
 	{
 		// try to figure out what type of unexpected exception occured
 		try {

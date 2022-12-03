@@ -57,7 +57,7 @@ namespace IO {
 		/**
 		 * Constructor
 		 */
-		UnixIOFactory () throw(bad_exception);
+		UnixIOFactory (); //throw(bad_exception);
 		
 		
 		/**
@@ -73,7 +73,7 @@ namespace IO {
 		 * Tries to create a ServerCommunicator if no MasterServer is already present
 		 * Otherwise, throws a ServerIsPresentException 
 		 */
-		auto_ptr <ServerCommunicator> createServerCommunicator () const throw(IOException, ServerIsPresentException, bad_exception);
+		auto_ptr <ServerCommunicator> createServerCommunicator () const; //throw(IOException, ServerIsPresentException, bad_exception);
 		
 		
 		/**
@@ -82,21 +82,21 @@ namespace IO {
 		 * the blocking with manipulating standard in and standard out by ourselves with this method.
 		 * This method should be called before any read or write access to the RTBConnection object was made. 
 		 */
-		void switch2BlockingMode() const throw (IOException, bad_exception); 
+		void switch2BlockingMode() const; //throw (IOException, bad_exception); 
 		
 			
 		/**
 		* This method create an ClientCommunicator and should be call after createServerCommunicator 
 		* throws an ServerIsPresentException.
 		*/
-		auto_ptr <ClientCommunicator> createClientCommunicator () const throw(IOException, bad_exception);
+		auto_ptr <ClientCommunicator> createClientCommunicator () const; //throw(IOException, bad_exception);
 		
 	
 		/**
 		 * Important: RTBConnection should be initialized only once!!!
 		 * NOTE: The concrete factory is in to delete the rtbconnection object!!!
 		 */
-		RTBConnection* getRTBConnection () const throw(IOException, bad_exception);
+		RTBConnection* getRTBConnection () const; //throw(IOException, bad_exception);
 		
 	/*
 	* Private stuff

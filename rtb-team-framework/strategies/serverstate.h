@@ -60,14 +60,14 @@ public:
 	/**
 	 * This method is called from the coordinator's processReceivedRTBMessages method and should send tips to the clients.
 	 */
-	virtual void  sendServerTips () throw (StrategyException,bad_exception) = 0;
+	virtual void  sendServerTips () = 0; //tthrow(StrategyException,bad_exception) = 0;
 protected:
 	void  setCurrentServerState (unsigned char serverStateIndex) throw ();
 	/**
 	 * Adds a new tip to the tip buffer of the ServerCoordinator
 	 * @param tip The server tip in string shape
 	 */
-	void  sendServerTipString (const string& tip) throw (StrategyException,bad_exception);
+	void  sendServerTipString (const string& tip); //throw (StrategyException,bad_exception);
 private:
 	ServerCoordinator *_serverCoordinator;
 };

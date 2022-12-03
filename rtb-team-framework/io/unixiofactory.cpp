@@ -50,7 +50,7 @@ namespace IO {
 	/**
 	 * Constructor
 	 */
-	UnixIOFactory::UnixIOFactory () throw(bad_exception)
+	UnixIOFactory::UnixIOFactory () //throw(bad_exception)
 	: _mrc (MasterResourceControl::Instance()) 
  	{
 		// register this initial object by the MRC
@@ -67,14 +67,14 @@ namespace IO {
 	/**
 	 * Methods
 	 */
-	auto_ptr <ServerCommunicator>  UnixIOFactory::createServerCommunicator () const throw(IOException, ServerIsPresentException, bad_exception) {
+	auto_ptr <ServerCommunicator>  UnixIOFactory::createServerCommunicator () const { //throw(IOException, ServerIsPresentException, bad_exception) {
 
 		return auto_ptr<ServerCommunicator>(new UnixServerCommunicator());
 	}
 	/**
 	 *
 	 */
-	void UnixIOFactory::switch2BlockingMode() const throw (IOException, bad_exception) {
+	void UnixIOFactory::switch2BlockingMode() const { //throw (IOException, bad_exception) {
 	
 		if( fcntl(0, F_SETFL, fcntl(0, F_GETFL, 0) & (~O_NONBLOCK)) != 0 )
 			throw(IOException("Could not switch stdin to blocking-mode."));
@@ -85,14 +85,14 @@ namespace IO {
 	/**
 	 *
 	 */
-	auto_ptr <ClientCommunicator>  UnixIOFactory::createClientCommunicator () const throw(IOException, bad_exception) {
+	auto_ptr <ClientCommunicator>  UnixIOFactory::createClientCommunicator () const { //throw(IOException, bad_exception) {
 		
 		return auto_ptr<ClientCommunicator>(new UnixClientCommunicator);
 	}
 	/**
 	 *
 	 */
-	RTBConnection*  UnixIOFactory::getRTBConnection () const throw(IOException, bad_exception) {
+	RTBConnection*  UnixIOFactory::getRTBConnection () const { //throw(IOException, bad_exception) {
 		return UnixRTBConnection::instance();
 	}
 

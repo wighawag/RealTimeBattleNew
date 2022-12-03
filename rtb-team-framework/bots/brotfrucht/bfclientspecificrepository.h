@@ -59,7 +59,7 @@ namespace Brotfrucht {
 			/**
 			* Method to reset the repositories (clears number of collisions, (re)starts timer)
 			*/
-			void reset() throw(StrategyException, bad_exception);
+			void reset(); //throw(StrategyException, bad_exception);
 			
 			/**
 			 * Method to set the shoting interval in nanoseconds
@@ -85,13 +85,13 @@ namespace Brotfrucht {
 			* (Re)Start the timer with the current systemtime
 			* Throws exception if starting the timer does not work
 			*/
-			void startTimer() throw(StrategyException);
+			void startTimer(); //throw(StrategyException);
 			
 			/**
 			 * Get nanoseconds passed since the timer was started
 			 * Throws exception if getting the current time failed
 			 */ 
-			double getTimePassed() const throw(StrategyException);
+			double getTimePassed() const; //throw(StrategyException);
 			
 			/**
 			 * Get the logger for the client brotfrucht strategy states
@@ -107,7 +107,7 @@ namespace Brotfrucht {
 			/**
 			 * Constructor
 			*/
-			BFClientSpecificRepository() throw(StrategyException, bad_exception);
+			BFClientSpecificRepository(); //throw(StrategyException, bad_exception);
 		private:			 
 			 /**
 			  * number of hits of the robot

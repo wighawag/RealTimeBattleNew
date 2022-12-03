@@ -58,7 +58,7 @@ namespace IO {
 		/**
 		* Constructor
 		*/
-		UnixServerCommunicator() throw(IOException, ServerIsPresentException, bad_exception);
+		UnixServerCommunicator(); //throw(IOException, ServerIsPresentException, bad_exception);
 		
 		 
 		/*
@@ -68,7 +68,7 @@ namespace IO {
 		* Establish connection to remoteclient.
 		* @return Connection to communicator directly with the remoteclient.
 		*/
-		auto_ptr <ClientConnection>  createRemoteClientConnection () throw(ServerIsPresentException, IOException, bad_exception);
+		auto_ptr <ClientConnection>  createRemoteClientConnection (); //throw(ServerIsPresentException, IOException, bad_exception);
 			
 		
 		/**

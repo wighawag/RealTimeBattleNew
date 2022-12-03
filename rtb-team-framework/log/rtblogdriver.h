@@ -66,7 +66,7 @@ namespace Log {
 		* Constructor for the first rtbLogDriver object
 		* Constructor will register the object by the MRC with the name rtbLogDriver
 		*/
-		RTBLogDriver() throw (bad_exception);
+		RTBLogDriver(); //throw (bad_exception);
 		
 		/*
 		*  Operations
@@ -75,7 +75,7 @@ namespace Log {
 		/**
 		* Method that is called by the MRC to duplicate the whole object
 		*/
-		virtual auto_ptr <LogDriver>  clone () const throw (bad_exception);
+		virtual auto_ptr <LogDriver>  clone () const; //throw (bad_exception);
 		
 	
 		/**
@@ -83,7 +83,7 @@ namespace Log {
 		* @param message Message that will be logged in the file
 		* If logger object was not initialized properly, this method will only throw an exception
 		*/
-		virtual void  logMessage (const string& message) throw (IOException, bad_exception);
+		virtual void  logMessage (const string& message); //throw (IOException, bad_exception);
 		
 	
 		/**
@@ -93,7 +93,7 @@ namespace Log {
 		 * logCommand:Print : Use the Print command to log messages
 		 * logCommand:Both  : Use the Print and the Debug command to log messages (questionable option)		
 		 */
-		virtual void  setLogDriverParameters (const string& logDriverParameters) throw (IOException, bad_exception);
+		virtual void  setLogDriverParameters (const string& logDriverParameters); //throw (IOException, bad_exception);
 	
 	/*
 	* Private stuff

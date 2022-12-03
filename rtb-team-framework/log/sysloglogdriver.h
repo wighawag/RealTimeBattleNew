@@ -49,11 +49,11 @@ namespace Log {
 	*/
 	class SyslogLogDriver: public LogDriver {
 	private:
-		SyslogLogDriver(const string&) throw (IOException, bad_exception);
+		SyslogLogDriver(const string&); //throw (IOException, bad_exception);
 		/**
 		* contains the number of instances
 		*/
-		SyslogLogDriver(const string& syslogIdent, int syslogOption, int syslogPriority) throw(bad_exception);
+		SyslogLogDriver(const string& syslogIdent, int syslogOption, int syslogPriority); //throw(bad_exception);
 		
 		/**
 		* contains the number of instances
@@ -93,23 +93,23 @@ namespace Log {
 		int _syslogPriority;
 		static map<string, int> _options;
 		static map<string, int> _priorities;
-		int parseOption(const string&) throw (IOException,bad_exception);
-		int parsePriority(const string&) throw (IOException,bad_exception);
-		map<string, string> parseParameterString(const string&) throw (IOException,bad_exception);
-		string trim(const string&) throw (bad_exception);
-		void init() throw (bad_exception);
+		int parseOption(const string&); //throw (IOException,bad_exception);
+		int parsePriority(const string&); //throw (IOException,bad_exception);
+		map<string, string> parseParameterString(const string&); //throw (IOException,bad_exception);
+		string trim(const string&); //throw (bad_exception);
+		void init(); //throw (bad_exception);
 		void openlog() throw ();
 	public:
-		SyslogLogDriver() throw (bad_exception);
+		SyslogLogDriver(); //throw (bad_exception);
 		/** 
 		* extract ident, option and priority from logDriverParameters 
 		* parameter format: <add it here >
 		* default: "option: LOG_CONS|LOG_PID, ident: Realtimebattle, priority: LOG_INFO"
 		*/
-		void setLogDriverParameters(const string&) throw (IOException, bad_exception); 
+		void setLogDriverParameters(const string&); //throw (IOException, bad_exception); 
 		void setLogDriverParameters(const string& syslogIdent, int syslogOption, int syslogPriority) throw();
-		void logMessage(const string&) throw (IOException,bad_exception);
-		auto_ptr<LogDriver> clone() const throw (bad_exception);
+		void logMessage(const string&); //throw (IOException,bad_exception);
+		auto_ptr<LogDriver> clone() const; // throw (bad_exception);
 		~SyslogLogDriver() throw();
 	};
 

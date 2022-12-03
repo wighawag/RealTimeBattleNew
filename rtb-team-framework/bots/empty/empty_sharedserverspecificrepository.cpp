@@ -37,7 +37,7 @@ namespace empty {
 	/**
 	* Method to obtain the one and only object of this class
 	*/
-	empty_SharedServerSpecificRepository* empty_SharedServerSpecificRepository::Instance() throw (bad_exception) {
+	empty_SharedServerSpecificRepository* empty_SharedServerSpecificRepository::Instance() { //throw (bad_exception) {
 		empty_SharedServerSpecificRepository* empty_sssp (empty_SharedServerSpecificRepository::_instance.get());
 		if (empty_sssp==0) {
 			empty_SharedServerSpecificRepository::_instance.reset(empty_sssp=new empty_SharedServerSpecificRepository());
@@ -53,13 +53,13 @@ namespace empty {
 	/**
 	 * Constructor
 	 */
-	empty_SharedServerSpecificRepository::empty_SharedServerSpecificRepository() throw (StrategyException, bad_exception) {}
+	empty_SharedServerSpecificRepository::empty_SharedServerSpecificRepository() {} //throw (StrategyException, bad_exception) {}
 
 
 	/**
 	* Method to reset the repositories
 	*/
-	void empty_SharedServerSpecificRepository::reset() throw (bad_exception) {}
+	void empty_SharedServerSpecificRepository::reset() {} //throw (bad_exception) {}
 
 	/**
 	* Only instance of this class

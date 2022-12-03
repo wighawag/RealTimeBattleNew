@@ -43,14 +43,14 @@ namespace Brotfrucht {
 	*/
 	class BFServerRotateState: public BFServerBasicState {
 	public:
-		BFServerRotateState(ServerCoordinator* c,BFInternalServerSpecificRepository* bfssp, BFSharedServerSpecificRepository* bfsharedssp) throw (StrategyException,bad_exception);
+		BFServerRotateState(ServerCoordinator* c,BFInternalServerSpecificRepository* bfssp, BFSharedServerSpecificRepository* bfsharedssp); //throw (StrategyException,bad_exception);
 		
 		/**
 		* This method is called when the RTB message "Collision [type] [angle]" occurs. This message is sent whan the robot has been hit by or hits another object,
 		* @param type The type of the hit object
 		* @param angle The angle the collision happened at in rad, relative to the robot front
 		*/
-		void receiveRTBMessageCollision(object_type type,double angle) throw (StrategyException, bad_exception);	
+		void receiveRTBMessageCollision(object_type type,double angle); //throw (StrategyException, bad_exception);	
 	private:	
 		BFSharedServerSpecificRepository* _bfsharedssp;
 	};

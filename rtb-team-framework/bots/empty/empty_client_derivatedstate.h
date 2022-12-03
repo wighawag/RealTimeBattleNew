@@ -37,7 +37,7 @@ namespace empty {
 
 	class empty_ClientDerivatedState: public empty_ClientBasicState {
 	public:
-		empty_ClientDerivatedState(ClientCoordinator* i, empty_ClientSpecificRepository* empty_csp, const GameOptionsRepository* empty_gor) throw (StrategyException,bad_exception);
+		empty_ClientDerivatedState(ClientCoordinator* i, empty_ClientSpecificRepository* empty_csp, const GameOptionsRepository* empty_gor); //throw (StrategyException,bad_exception);
 		
 		/**
 		* Here you can declare methods to override the ClientBasicStates

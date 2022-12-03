@@ -56,7 +56,7 @@ namespace IO {
 		 * Constructor
 		 * @param serverSocket socket form an already etablished connection to the server 
 		 */
-		UnixServerConnection (int serverSocket) throw(IOException, bad_exception);
+		UnixServerConnection (int serverSocket); //throw(IOException, bad_exception);
 		
 		
 		/**
@@ -71,26 +71,26 @@ namespace IO {
 		/**
 		 * return an instance (->singleton pattern)
 		 */
-		static UnixServerConnection* instance(int serverSocket) throw(IOException, bad_exception);
+		static UnixServerConnection* instance(int serverSocket); //throw(IOException, bad_exception);
 		
 		
 		/**
 		 * 
 		 * @param line Message that will be send over the connection (does not append a trailing newline)
 		 */
-		void  sendLine (const string& line) throw(StrategyException, IOException, bad_exception);
+		void  sendLine (const string& line); //throw(StrategyException, IOException, bad_exception);
 	
 
 		/**
 		 * @return string that contains a line out of the connection (not terminated with newline)
 		 */
-		string  getLine () throw(IOException, bad_exception);
+		string  getLine (); //throw(IOException, bad_exception);
 	
 
 		/**
 		 * @return name of the associated target
 		 */
-		string  getTargetName () throw(IOException, bad_exception);
+		string  getTargetName (); //throw(IOException, bad_exception);
 		
 		
 	/*
@@ -129,7 +129,7 @@ namespace IO {
 		/**
 		* Private constructor (->singleton pattern)
 		*/
-		UnixServerConnection () throw(IOException, bad_exception);
+		UnixServerConnection (); //throw(IOException, bad_exception);
 	};
 }
 #endif //UNIX_SERVERCONNECTION_H

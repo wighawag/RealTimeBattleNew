@@ -71,19 +71,19 @@ namespace IO {
 		 * NOTE: the StrategyException is neccessary (see LocalClientConnection::sendLine)
 		 * @param line Message that will be send over the connection (does not append a trailing newline)
 		 */
-		virtual void sendLine (const string& line) throw(StrategyException, IOException, bad_exception) = 0;
+		virtual void sendLine (const string& line) = 0; //throw(StrategyException, IOException, bad_exception) = 0;
 		
 	
 		/**
 		 * @return string that contains a line out of the connection (not terminated with newline)
 		 */
-		virtual string getLine () throw(IOException, bad_exception) = 0;
+		virtual string getLine () = 0; //throw(IOException, bad_exception) = 0;
 		
 	
 		/**
 		 * @return name of the associated target
 		 */
-		virtual string getTargetName () throw(IOException, bad_exception) = 0;
+		virtual string getTargetName () = 0; //throw(IOException, bad_exception) = 0;
 		
 	
 	};

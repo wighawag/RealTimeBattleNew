@@ -34,7 +34,7 @@
 #include "empty_sharedserverspecificrepository.h"
 
 namespace empty {	
-	empty_ServerDerivatedState::empty_ServerDerivatedState(ServerCoordinator* i , empty_InternalServerSpecificRepository* empty_issp, empty_SharedServerSpecificRepository* empty_sharedssp) throw (StrategyException,bad_exception): empty_ServerBasicState(i, empty_issp, empty_sharedssp) {}
+	empty_ServerDerivatedState::empty_ServerDerivatedState(ServerCoordinator* i , empty_InternalServerSpecificRepository* empty_issp, empty_SharedServerSpecificRepository* empty_sharedssp) /*throw (StrategyException,bad_exception)*/: empty_ServerBasicState(i, empty_issp, empty_sharedssp) {}
 		
 	/**
 	* Implement here the overrided methods

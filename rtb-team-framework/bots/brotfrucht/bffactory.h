@@ -63,9 +63,9 @@ namespace Brotfrucht {
 	{
 	public:
 		 BFFactory();
-		 auto_ptr <ServerStateData>  createServerStateData (ServerCoordinator* serverCoordinator, const GameOptionsRepository* gameOptionsRepository) const throw(StrategyException,bad_exception);
-		 auto_ptr <ClientStateData>  createClientStateData (ClientCoordinator* clientCoordinator, const GameOptionsRepository* gameOptionsRepository) const throw(StrategyException,bad_exception);
-		 string getFinishingString() const throw(bad_exception);
+		 auto_ptr <ServerStateData>  createServerStateData (ServerCoordinator* serverCoordinator, const GameOptionsRepository* gameOptionsRepository) const; //throw(StrategyException,bad_exception);
+		 auto_ptr <ClientStateData>  createClientStateData (ClientCoordinator* clientCoordinator, const GameOptionsRepository* gameOptionsRepository) const; //throw(StrategyException,bad_exception);
+		 string getFinishingString() const; //throw(bad_exception);
 	};
 }
 #endif //BFFACTORY_H

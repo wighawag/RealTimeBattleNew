@@ -73,12 +73,12 @@ namespace IO {
 		/**
 		 * writing a character 
 		 */
-		int overflow (int character) throw(IOException, bad_exception);
+		int overflow (int character); //throw(IOException, bad_exception);
 		
 		/**
 		 * writing any number of characters
 		 */
-		streamsize xsputn (const char* databuffer, streamsize size) throw(IOException, bad_exception);
+		streamsize xsputn (const char* databuffer, streamsize size); //throw(IOException, bad_exception);
 	};
 }
 

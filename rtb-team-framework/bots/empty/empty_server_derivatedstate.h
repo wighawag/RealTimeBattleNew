@@ -37,7 +37,7 @@ namespace empty {
 	
 	class empty_ServerDerivatedState: public empty::empty_ServerBasicState {
 	public:
-		empty_ServerDerivatedState(ServerCoordinator* i, empty_InternalServerSpecificRepository* empty_issp, empty_SharedServerSpecificRepository* empty_sharedssp) throw (StrategyException,bad_exception);
+		empty_ServerDerivatedState(ServerCoordinator* i, empty_InternalServerSpecificRepository* empty_issp, empty_SharedServerSpecificRepository* empty_sharedssp); //throw (StrategyException,bad_exception);
 	
 		/**
 		* Here you can declare methods to override the ClientBasicStates

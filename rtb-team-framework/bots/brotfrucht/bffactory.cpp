@@ -49,7 +49,7 @@ BFFactory::BFFactory()
 //	see my mail: RTBGlobal::MasterResourceControl::Instance()->registrateStrategyFactory("Brotfrucht",this);
 }
 
-auto_ptr <ServerStateData>  BFFactory::createServerStateData (ServerCoordinator* serverCoordinator, const GameOptionsRepository* gameOptionsRepository) const throw(StrategyException,bad_exception)
+auto_ptr <ServerStateData>  BFFactory::createServerStateData (ServerCoordinator* serverCoordinator, const GameOptionsRepository* gameOptionsRepository) const //throw(StrategyException,bad_exception)
 {
 	auto_ptr<pvector<ServerState> > states(new pvector<ServerState>());
 	
@@ -63,7 +63,7 @@ auto_ptr <ServerStateData>  BFFactory::createServerStateData (ServerCoordinator*
 	return auto_ptr<ServerStateData> (new ServerStateData(states,bfssp,bfsharedssp));
 }
 
-auto_ptr <ClientStateData>  BFFactory::createClientStateData (ClientCoordinator* clientCoordinator, const GameOptionsRepository* gameOptionsRepository) const throw(StrategyException,bad_exception)
+auto_ptr <ClientStateData>  BFFactory::createClientStateData (ClientCoordinator* clientCoordinator, const GameOptionsRepository* gameOptionsRepository) const //throw(StrategyException,bad_exception)
 {
 	auto_ptr<pvector<ClientState> > states(new pvector<ClientState>());
 	
@@ -76,7 +76,7 @@ auto_ptr <ClientStateData>  BFFactory::createClientStateData (ClientCoordinator*
 	return auto_ptr<ClientStateData> (new ClientStateData(states,bfcsp));
 }
 
-string BFFactory::getFinishingString() const throw(bad_exception)
+string BFFactory::getFinishingString() const //throw(bad_exception)
 {
 	// not too long word (saves time by parsing)
 	return "BFE";

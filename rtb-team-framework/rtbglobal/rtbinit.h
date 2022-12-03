@@ -58,7 +58,7 @@
 		* Calls the RTBConfig Parser to parse the config file, register the pasring result in the MRC
 		* @param configFileName Path to the file containing the absolute necessary configuration data
 		*/
-		static void  ParseConfigFile (const string& configFileName) throw (ParserException, bad_exception);
+		static void  ParseConfigFile (const string& configFileName); //throw (ParserException, bad_exception);
 		
 		/**
 		* This method first has to switch to blocking mode
@@ -74,13 +74,13 @@
 		* 2. Section Main, Key ActualColor : actual color as hex string, if first sequence, this value will be set to RobotHomeColor in section Main of the configuration file
 		* 3. Section Main, Key ActualName: actual name of the roboter given by the server, if first sequence, this value will be set to RobotName in section Main of the configuration file
 		*/
-		static void  SendInitialMessages() throw (IOException, bad_exception);
+		static void  SendInitialMessages(); //throw (IOException, bad_exception);
 	
 		/**
 	 	 * Starts the game as a client or as the RTB MasterServer (automatically found out by the MRC)
 		 * @return true, if no error occured in the whole sequence, false if something went wrong and we could not continue playing
 		 */
-		static bool  StartGame () throw (RTBException, bad_exception);
+		static bool  StartGame (); //throw (RTBException, bad_exception);
 	};
 }
 #endif //RTBINIT_H

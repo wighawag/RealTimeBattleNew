@@ -69,7 +69,7 @@ namespace IO {
 		* Tries to create a ServerCommunicator if no MasterServer is already present
 		* Otherwise, throws a ServerIsPresentException 
 		*/
-		virtual auto_ptr <ServerCommunicator>  createServerCommunicator () const throw(IOException, ServerIsPresentException, bad_exception) = 0;
+		virtual auto_ptr <ServerCommunicator>  createServerCommunicator () const = 0; //throw(IOException, ServerIsPresentException, bad_exception) = 0;
 		
 		/**
 		 * Since the RealTime Battle Server will restart our program (and therefore cause ugly problems)
@@ -77,20 +77,20 @@ namespace IO {
 		 * the blocking with manipulating standard in and standard out by ourselves with this method.
 		 * This method should be called before any read or write access to the RTBConnection object was made. 
 		*/
-		virtual void switch2BlockingMode() const throw (IOException, bad_exception) = 0; 
+		virtual void switch2BlockingMode() const = 0; //throw (IOException, bad_exception) = 0; 
 		
 		/**
 		* This method create an ClientCommunicator and should be call after createServerCommunicator 
 		* throws an ServerIsPresentException.
 		*/
-		virtual auto_ptr <ClientCommunicator>  createClientCommunicator () const throw(IOException, bad_exception) = 0;
+		virtual auto_ptr <ClientCommunicator>  createClientCommunicator () const = 0; // throw(IOException, bad_exception) = 0;
 		
 	
 		/**
 		* Important: RTBConnection should be initialized only once!!!
 		* NOTE: The concrete factory is in to delete the rtbconnection object!!!
 		*/
-		virtual RTBConnection*  getRTBConnection () const throw(IOException, bad_exception) = 0;
+		virtual RTBConnection*  getRTBConnection () const = 0; //throw(IOException, bad_exception) = 0;
 	
 	};
 }

@@ -89,21 +89,21 @@ public:
 	
 	
 	ServerCoordinator (	ClientConnection* clientConnection,
-				const GameOptionsRepository* gameOptionsRepository	) throw (ConfigNotLoadedException, KeyNotFoundException,bad_exception,StrategyException,ResourceNotFoundException);
+				const GameOptionsRepository* gameOptionsRepository	); //throw (ConfigNotLoadedException, KeyNotFoundException,bad_exception,StrategyException,ResourceNotFoundException);
 	
 	
 	/**	
 	 * Calls reset on all state objects and sets the current state to the beginning state.
 	 */
-	void  resetGame () throw (StrategyException,bad_exception);
+	void  resetGame (); //throw (StrategyException,bad_exception);
 
 	/**
 	 * This method calls sendServerTips on the current server state object.
 	 */
-	void  processReceivedRTBMessages () throw (StrategyException,bad_exception);
+	void  processReceivedRTBMessages (); //throw (StrategyException,bad_exception);
 	
 	
-	string  getAssociatedRobotName () throw (bad_exception);
+	string  getAssociatedRobotName (); //throw (bad_exception);
 
 /*
 * Protected stuff
@@ -123,7 +123,7 @@ private:
 
 	ClientConnection* _clientConnection;
 
-	void  setCurrentServerState (unsigned char serverStateIndex) throw (bad_exception,StrategyException);
+	void  setCurrentServerState (unsigned char serverStateIndex); //throw (bad_exception,StrategyException);
 
 	/**
 	 * This method is used by the server state objects to send a concrete server tipe to the clients already encoded in string representation.
@@ -134,7 +134,7 @@ private:
 	/**
 	 * This method writes a stop command (e. g. "FINISH", given by StrategyFactory::getFinishingString()) on the tip buffer connection and flushes it to the ClientConnection. The reactOnServerTip method of ClientCoordinator recognizes this message and will initiate the generation of messages to the rtb server
 	 */
-	void  endServerTipSequence () throw (bad_exception);
+	void  endServerTipSequence (); //throw (bad_exception);
 	/**
 	 * This string is used to reset _tipBuffer 
 	 */

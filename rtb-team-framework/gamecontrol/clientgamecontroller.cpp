@@ -64,7 +64,7 @@ namespace GameControl {
 	/**
 	 * 
 	 */
-	bool ClientGameController::ClientGameController::start () throw (bad_exception) {
+	bool ClientGameController::ClientGameController::start () { //throw (bad_exception) {
 		// main exception block 
 		try {
 			_logger->logMessage(3,"Starting main method in ClientGameController for robot: "+_robotName);
@@ -249,7 +249,7 @@ namespace GameControl {
 	/**
 	 *
 	 */
-	 ClientGameController::ClientGameController (auto_ptr <ClientCommunicator> clientCommunicator) throw (RTBException, bad_exception) :_clientCoordinator(0),_clientCommunicator(clientCommunicator) {
+	 ClientGameController::ClientGameController (auto_ptr <ClientCommunicator> clientCommunicator) { //throw (RTBException, bad_exception) :_clientCoordinator(0),_clientCommunicator(clientCommunicator) {
 		
 		// get MRC
 		_mrc=MasterResourceControl::Instance();

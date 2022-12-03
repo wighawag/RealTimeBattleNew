@@ -43,7 +43,7 @@ namespace IO {
 	/**
 	 * Constructors
 	 */
-	UnixInStream::UnixInStream (int fd) throw(IOException, bad_exception)
+	UnixInStream::UnixInStream (int fd) //throw(IOException, bad_exception)
 	: istream(0), _unixInStreambuf(fd), _fd(fd) {
 		rdbuf(&_unixInStreambuf);
 			
@@ -53,7 +53,7 @@ namespace IO {
 	/**
 	 * Methods
 	 */
-	string UnixInStream::getline(void) throw(IOException, bad_exception) {
+	string UnixInStream::getline(void) { //throw(IOException, bad_exception) {
 		try {
 			//read datalength
 			char lenBuffer[2];

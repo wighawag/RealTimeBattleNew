@@ -63,7 +63,7 @@ namespace IO {
 		* Establish connection to remoteclient.
 		* @return Connection to communicator directly with the remoteclient.
 		*/
-		virtual auto_ptr <ClientConnection>  createRemoteClientConnection () throw(ServerIsPresentException, IOException, bad_exception) = 0;
+		virtual auto_ptr <ClientConnection>  createRemoteClientConnection () = 0; //throw(ServerIsPresentException, IOException, bad_exception) = 0;
 			
 		
 		/**

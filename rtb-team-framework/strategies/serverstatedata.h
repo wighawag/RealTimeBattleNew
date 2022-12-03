@@ -69,7 +69,7 @@ namespace Strategies {
 
 		SharedServerSpecificRepository* sharedServerSpecificRepository;
 	
-		ServerStateData (auto_ptr < pvector<ServerState> > serverStates, auto_ptr <InternalServerSpecificRepository> internalServerSpecificRepository,SharedServerSpecificRepository* sharedServerSpecificRepository) throw(bad_exception);
+		ServerStateData (auto_ptr < pvector<ServerState> > serverStates, auto_ptr <InternalServerSpecificRepository> internalServerSpecificRepository,SharedServerSpecificRepository* sharedServerSpecificRepository); //throw(bad_exception);
 		
 		/**
 		* Destructor, does nothing

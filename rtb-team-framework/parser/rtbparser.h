@@ -69,21 +69,21 @@ public:
 	 * @param message The incoming RTB message in string shape
 	 * @return The parsed RTB message
 	 */
-	static const RTBParseResult*  processRTBMessage (const string& message) throw (ParserException,bad_exception);
+	static const RTBParseResult*  processRTBMessage (const string& message); //throw (ParserException,bad_exception);
 		
 	
 	/**
 	 * If the last message was from a type, that a coordinator object can handle, this method delegates it to the appropiate method.
 	 * @param coordinator The Cordinator to handle the last message
 	 */
-	static void  delegateLastMessage (Coordinator* coordinator) throw (StrategyException, bad_exception);
+	static void  delegateLastMessage (Coordinator* coordinator); //throw (StrategyException, bad_exception);
 		
 	
 	/**
 	 * If last message was from type GameOption, updates the GameOptionsRepository.
 	 * @param gameOptionsRepository 
 	 */
-	static void  updateGameOptions (GameOptionsRepository* gameOptionsRepository) throw(ParserException,bad_exception);
+	static void  updateGameOptions (GameOptionsRepository* gameOptionsRepository); //throw(ParserException,bad_exception);
 /*
 * Private stuff
 */

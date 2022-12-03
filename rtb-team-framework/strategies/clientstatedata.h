@@ -63,7 +63,7 @@ public:
 	* Constructor
 	*/
 	ClientStateData (	auto_ptr < pvector<ClientState > > clientStates,
-				auto_ptr <ClientSpecificRepository> clientSpecificRepository	) throw(bad_exception);
+				auto_ptr <ClientSpecificRepository> clientSpecificRepository	); //throw(bad_exception);
 				
 	/**
 	* Destructor, does nothing

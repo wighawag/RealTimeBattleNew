@@ -64,7 +64,7 @@ namespace Log {
 		/**
 		* Method that is called by the MRC to duplicate the whole object
 		*/
-		virtual auto_ptr <LogDriver>  clone () const throw (bad_exception) {
+		virtual auto_ptr <LogDriver>  clone () const { //throw (bad_exception) {
 			return auto_ptr<LogDriver>(new NullLogDriver());
 		}
 		
@@ -81,7 +81,7 @@ namespace Log {
 	 	 * 
 		 * @param logDriverParameters this logger does not need any parameters
 		 */
-		virtual void  setLogDriverParameters (const string& logDriverParameters) throw (IOException, bad_exception) {}
+		virtual void  setLogDriverParameters (const string& logDriverParameters); //throw (IOException, bad_exception) {}
 	};
 }
 #endif

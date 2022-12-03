@@ -52,7 +52,7 @@ namespace GameControl {
 		 * When this method will return, the whole sequence is over or an unrevoverable error has occured
 		 * @return true for success, false for error
 		 */
-		virtual bool start () throw (bad_exception) =0; // I think, the GameContollers should handle all occuring exceptions by itself
+		virtual bool start () = 0; //throw (bad_exception) =0; // I think, the GameContollers should handle all occuring exceptions by itself
 
 		
 	

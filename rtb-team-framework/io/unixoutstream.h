@@ -55,7 +55,7 @@ namespace IO {
 		* Constructors
 		* @param fd unix-filedescriptor
 		*/
-		UnixOutStream (int fd) throw(bad_exception);
+		UnixOutStream (int fd); //throw(bad_exception);
 		
 		
 		/*
@@ -65,7 +65,7 @@ namespace IO {
 		* convert the string into a simple run-length-encoded lines and send the lines
 		* @param line string which contains the line(s) to send
 		*/
-		void sendline(const string& line) throw(IOException, bad_exception);
+		void sendline(const string& line); //throw(IOException, bad_exception);
 		
 		
 	/*

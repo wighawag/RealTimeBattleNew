@@ -40,10 +40,10 @@
 	using std::ostringstream;
 	using std::bad_exception;
 
-	ConfigurationParserException::ConfigurationParserException(const string& file, int line, const string& error) throw (bad_exception) : 
+	ConfigurationParserException::ConfigurationParserException(const string& file, int line, const string& error) : //throw (bad_exception) : 
 		ParserException(message(file, line, error)) {}
 
-	string ConfigurationParserException::message(const string& file, int line, const string& error) throw (bad_exception) {
+	string ConfigurationParserException::message(const string& file, int line, const string& error) { //throw (bad_exception) {
 		ostringstream os;
 		os << "Configuration file '" << file << "': Syntax error in line " << line << ": " << error;
 		return os.str();

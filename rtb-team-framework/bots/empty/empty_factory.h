@@ -58,9 +58,9 @@ namespace empty {
 	{
 	public:
 		 empty_Factory();
-		 auto_ptr <ServerStateData>  createServerStateData (ServerCoordinator* serverCoordinator, const GameOptionsRepository* gameOptionsRepository) const throw(StrategyException,bad_exception);
-		 auto_ptr <ClientStateData>  createClientStateData (ClientCoordinator* clientCoordinator, const GameOptionsRepository* gameOptionsRepository) const throw(StrategyException,bad_exception);
-		 string getFinishingString() const throw(bad_exception);
+		 auto_ptr <ServerStateData>  createServerStateData (ServerCoordinator* serverCoordinator, const GameOptionsRepository* gameOptionsRepository) const; //throw(StrategyException,bad_exception);
+		 auto_ptr <ClientStateData>  createClientStateData (ClientCoordinator* clientCoordinator, const GameOptionsRepository* gameOptionsRepository) const; //throw(StrategyException,bad_exception);
+		 string getFinishingString() const; //throw(bad_exception);
 		 
 		 /**
 		  * It is not necessary to add any method in this class.

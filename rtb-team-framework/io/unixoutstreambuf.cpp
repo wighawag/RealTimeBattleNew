@@ -38,6 +38,8 @@
 #include <sstream>
 #include <errno.h>
 #include <string.h>
+#include <unistd.h>
+
 /**
  * Namespace
  */
@@ -57,7 +59,7 @@ namespace IO {
 	/**
 	 * writing a character
 	 */
-	int UnixOutStreambuf::overflow (int character) throw (IOException, bad_exception) {
+	int UnixOutStreambuf::overflow (int character) { //throw (IOException, bad_exception) {
 		if( character != EOF ) {
 			char data = character;
 			
@@ -75,7 +77,7 @@ namespace IO {
 	/**
 	 * 
 	 */
-	streamsize UnixOutStreambuf::xsputn (const char* databuffer, streamsize size) throw(IOException, bad_exception) {
+	streamsize UnixOutStreambuf::xsputn (const char* databuffer, streamsize size) { //throw(IOException, bad_exception) {
 		int num = write(_fd, databuffer, size);
 		
 		//writing successful?

@@ -60,7 +60,7 @@ protected:
 class Broadcast : public ostream
 {
 public:
-    static Broadcast* Instance() throw(bad_exception); 
+    static Broadcast* Instance();  /// throw(bad_exception)
     
     void set_logfile(const string& filename);
 	bool is_active();
