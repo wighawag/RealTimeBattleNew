@@ -11,3 +11,15 @@ Makefile
 /Robots/raziel
 /rtb-team-framework/config.*
 /rtb-team-framework/stamp-h1
+/intl/*.o
+/intl/charset.alias
+/intl/*.h
+/intl/*.a
+/intl/ref-add.sed
+/intl/ref-del.sed
+/Robots/**/*.o
+/Robots/**/*.robot
+/Robots/**/*_robot
+/rtb-team-framework/**/*.o
+src/*.o
+src/realtimebattle
