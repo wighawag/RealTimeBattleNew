@@ -1,0 +1,13 @@
+src/*.po
+.deps
+Makefile
+/config.*
+/stamp-h1
+/po/Makefile.in
+/po/POTFILES
+/Robots/jBot
+/Robots/perl
+/Robots/perl-Skeleton
+/Robots/raziel
+/rtb-team-framework/config.*
+/rtb-team-framework/stamp-h1
